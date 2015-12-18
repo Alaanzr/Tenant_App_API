@@ -1,8 +1,8 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
+var autopopulate = require("mongoose-autopopulate");
 
 var PropertySchema = new Schema ({
-  _id: Number,
   post_code: String,
   street_name: String,
   landlord_name: String,
@@ -17,12 +17,12 @@ var PropertySchema = new Schema ({
 });
 
 var AppUserSchema = new Schema({
-    _id: Number,
     name: {type: String, required: true },
     profile_picture: String,
-    properties: [{ type: Number, ref: 'Property' }],
-    connections: [{ type: Number, ref: 'AppUser' }]
+    properties: [{ type: Schema.Types.ObjectId, ref: 'Property', autopopulate: true }],
+    connections: [{ type: Schema.Types.ObjectId, ref: 'AppUser', autopopulate: true }]
 });
+AppUserSchema.plugin(autopopulate);
 
 
 var AppUser = mongoose.model('AppUser', AppUserSchema);

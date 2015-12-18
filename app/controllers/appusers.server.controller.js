@@ -28,6 +28,10 @@ exports.read = function(req, res) {
     res.json(req.appUser);
 };
 
+exports.property_read = function(req, res) {
+    res.json(req.appUser.properties);
+};
+
 exports.appuser_id = function(req, res, next, id) {
     AppUser.findOne({
             _id: id
