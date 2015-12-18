@@ -1,0 +1,26 @@
+{
+  "name": "tenantapp",
+  "description": "A flatmate review app",
+  "main": "server.js",
+  "authors": [
+    "Mattia Assogna",
+    "Ezzy Elliott",
+    "Alaan Rahim",
+    "Julien Deconinck"
+  ],
+  "license": "ISC",
+  "keywords": [
+  ],
+  "homepage": "https://github.com/Alaanzr/Tenant-App",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
+}
