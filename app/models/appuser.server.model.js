@@ -20,7 +20,7 @@ var AppUserSchema = new Schema({
     name: {type: String, required: true },
     profile_picture: String,
     properties: [{ type: Schema.Types.ObjectId, ref: 'Property', autopopulate: true }],
-    connections: [{ type: Schema.Types.ObjectId, ref: 'AppUser', autopopulate: true }]
+    connections: [{ type: Schema.Types.ObjectId, ref: 'AppUser', autopopulate: {select: '-connections'} }]
 });
 AppUserSchema.plugin(autopopulate);
 

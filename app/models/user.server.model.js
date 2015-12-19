@@ -3,18 +3,27 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
-    name: {type: String, required: true },
-    email: {type: String, required: true },
+    firstName: String,
+    lastName: String,
+    email: {
+              type: String,
+              match: [/.+\@\.+\..+/,
+              "Please fill a valid e-mail address"]
+    },
     username: {
               type: String,
               trim: true,
-              require: true,
+              require: 'Username is required',
               unique: true
     },
-    password: {type: String, required: true },
-    provider: String,
-    providerId: String,
-    providerData: {}
+    password: {type: String, validate: [function(password) {
+      return password && password.lenght > 6;
+    }, 'Password should be longer']},
+    salt: {type: String},
+    provider: {type: String, required: 'Provider is required'},
+    providrId: String,
+    providerData: {},
+    created: {type: Date, default: Date.now}
   });
 
   UserSchema.pre('save',
