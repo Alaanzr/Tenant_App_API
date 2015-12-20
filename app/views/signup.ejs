@@ -14,14 +14,17 @@
     <% } %>
 
     <div class="container">
-        <form class="form-signin" action="/register" method="post">
-            <h2 class="form-signin-heading text-center">Register</h2>
+        <form class="form-signin" action="/signup" method="post">
+            <h2 class="form-signin-heading text-center">Sign up</h2>
 
             <label for="username" class="sr-only">Username</label>
             <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
 
-            <label for="name" class="sr-only">Name</label>
-            <input type="text" id="name" name="name" class="form-control" placeholder="Name" required autofocus>
+            <label for="FirstName" class="sr-only">Name</label>
+            <input type="text" id="FirstName" name="firstName" class="form-control" placeholder="First Name" required autofocus>
+
+            <label for="LastName" class="sr-only">Name</label>
+            <input type="text" id="LastName" name="lastName" class="form-control" placeholder="Last Name" required autofocus>
 
             <label for="email" class="sr-only">E-mail</label>
             <input type="email" id="email" name="email" class="form-control" placeholder="E-mail" required>
@@ -29,7 +32,7 @@
             <label for="password" class="sr-only">Password</label>
             <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
 
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" >Sign up</button>
           </form>
 
           <div class="row">
