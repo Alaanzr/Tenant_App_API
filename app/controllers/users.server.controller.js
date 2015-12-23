@@ -115,28 +115,36 @@ exports.property_read = function(req, res) {
 
 exports.user_check = function(req, res) {
     var result = -1;
-    console.log("+++++++++++++++2");
-    console.log(req.user2._id);
     req.user.connections.forEach(function(connection, index) {
-        console.log("--------------1");
-        console.log(connection._id);
         if(req.user2._id === connection._id) {
             result = index;
-            console.log("==============");
-            console.log(connection._id);
-            console.log(result);
         }
     });
-    console.log("***************");
-    console.log(result);
     res.json(result);
 };
 
 
 
 exports.user_request = function(req, res) {
+    req.user.requests_sent.push(req.user2._id);
+    User.findByIdAndUpdate(req.user.id, { requests_sent: req.user.requests_sent },{new: true}, function(err, user) {
+        if (err) {
+            return next(err);
+        }
+        else {
+                req.user = user;
+        }
+    });
+    req.user2.requests_recd.push(req.user._id);
+    User.findByIdAndUpdate(req.user2.id, { requests_recd: req.user2.requests_recd },{new: true}, function(err, user) {
+        if (err) {
+            return next(err);
+        }
+        else {
+                req.user2 = user;
+        }
+    });
     var result = [req.user,req.user2];
-    console.log(result);
     res.json(result);
 };
 

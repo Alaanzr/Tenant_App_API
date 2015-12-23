@@ -35,23 +35,33 @@ frisby.create('api call POST "/user_connection/user_id1/user_id2" to REQUEST a c
       frisby.create('CHECK a connection user2 is a connection of user1  - when not connected')
       .get(URL + 'user_connection/' + user1.id +'/' + user2.id)
       .expectStatus(200)
+      .expectBodyContains('-1')
       .toss();
 
       frisby.create('send REQUEST for a connection from user1 to user2  - when not connected')
       .post(URL + 'user_connection/' + user1.id +'/' + user2.id)
       .expectStatus(200)
-      .expectBodyContains('"requests_sent":[{"_id":' + '"' + user1.id.toString() + '"')
-      .expectBodyContains('"requests_recd":[{"_id":' + '"' + user2.id.toString() + '"')
-      // .inspectJSON()
+      .toss();
+
+      frisby.create('READ  user1')
+      .get(URL + 'users/' + user1.id)
+      .expectStatus(200)
+      .expectBodyContains('"requests_sent":[{"_id":' + '"' + user2.id.toString() + '"')
+      .toss();
+
+      frisby.create('READ user2')
+      .get(URL + 'users/' + user2.id)
+      .expectStatus(200)
+      .expectBodyContains('"requests_recd":[{"_id":' + '"' + user1.id.toString() + '"')
       .toss();
 
 
-      frisby.create('DELETE user')
+      frisby.create('DELETE user1')
       .delete(URL + 'users/' + user1.id)
       .expectStatus(200)
       .toss();
 
-      frisby.create('DELETE user')
+      frisby.create('DELETE user2')
       .delete(URL + 'users/' + user2.id)
       .expectStatus(200)
       .toss();
