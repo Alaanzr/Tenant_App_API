@@ -80,75 +80,6 @@ var User = require('mongoose').model('User'),
 
 
 
-// exports.create = function(req, res, next) {
-//     var user = new User(req.body);
-//     user.save(function(err) {
-//         if (err) {
-//             return next(err);
-//         }
-//         else {
-//             res.json(user);
-//         }
-//     });
-// };
-
-// exports.read = function(req, res) {
-//     res.json(req.user);
-// };
-
-// exports.userByID = function(req, res, next, id) {
-//     User.findOne({
-//             _id: id
-//         },
-//         function(err, user) {
-//             if (err) {
-//                 return next(err);
-//             }
-//             else {
-//                 req.user = user;
-//                 next();
-//             }
-//         }
-//     );
-// };
-
-// exports.update = function(req, res, next) {
-//     User.findByIdAndUpdate(req.user.id, req.body, function(err, user) {
-//         if (err) {
-//             return next(err);
-//         }
-//         else {
-//             res.json(user);
-//         }
-//     });
-// };
-
-
-// exports.delete = function(req, res, next) {
-//     req.user.remove(function(err) {
-//         if (err) {
-//             return next(err);
-//         }
-//         else {
-//             res.json(req.user);
-//         }
-//     });
-// };
-
-
-// exports.list = function(req, res, next) {
-//     User.find({}, function(err, users) {
-//         if (err) {
-//             return next(err);
-//         }
-//         else {
-//             res.json(users);
-//         }
-//     });
-// };
-
-/////////////////////////////
-
 exports.create = function(req, res, next) {
     var user = new User(req.body);
     user.save(function(err) {
@@ -182,6 +113,33 @@ exports.property_read = function(req, res) {
     res.json(req.user.properties);
 };
 
+exports.user_check = function(req, res) {
+    var result = -1;
+    console.log("+++++++++++++++2");
+    console.log(req.user2._id);
+    req.user.connections.forEach(function(connection, index) {
+        console.log("--------------1");
+        console.log(connection._id);
+        if(req.user2._id === connection._id) {
+            result = index;
+            console.log("==============");
+            console.log(connection._id);
+            console.log(result);
+        }
+    });
+    console.log("***************");
+    console.log(result);
+    res.json(result);
+};
+
+
+
+exports.user_request = function(req, res) {
+    var result = [req.user,req.user2];
+    console.log(result);
+    res.json(result);
+};
+
 exports.user_id = function(req, res, next, id) {
     User.findOne({
             _id: id
@@ -193,6 +151,23 @@ exports.user_id = function(req, res, next, id) {
             }
             else {
                 req.user = user;
+                next();
+            }
+        }
+    );
+};
+
+exports.user_id2 = function(req, res, next, id) {
+    User.findOne({
+            _id: id
+        },
+        '-password -salt',
+        function(err, user) {
+            if (err) {
+                return next(err);
+            }
+            else {
+                req.user2 = user;
                 next();
             }
         }
