@@ -3,23 +3,42 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 var autopopulate = require("mongoose-autopopulate");
 
+
 var PropertySchema = new Schema ({
+
+  location_area: String,
+
   post_code: String,
+
   street_name: String,
+
   landlord_name: String,
+
   landlord_contact_details: String,
+
   contract_start: Date,
+
   contract_end :Date,
+
   property_type: String,
+
   number_of_flatmates: Number,
+
   monthly_cost: Number,
+
   deposit_amount: Number,
+
   inclusive: Boolean
+
 });
 
+
 var UserSchema = new Schema({
+
     firstName: String,
+
     lastName: String,
+
     email: {
               type: String,
               match: [/.+\@.+\..+/,
@@ -40,14 +59,31 @@ var UserSchema = new Schema({
               'Password should be longer']
     },
     salt: {type: String},
+
     provider: {type: String, required: 'Provider is required'},
+
     providrId: String,
+
     providerData: {},
+
     created: {type: Date, default: Date.now},
 
     profile_picture: String,
+
     properties: [{ type: Schema.Types.ObjectId, ref: 'Property', autopopulate: true }],
-    connections: [{ type: Schema.Types.ObjectId, ref: 'User', autopopulate: {select: '-connections -password -salt'} }]
+
+    connections: [{ type: Schema.Types.ObjectId, ref: 'User', autopopulate: {select: '-connections -requests_sent -requests_recd -password -salt'} }],
+
+    requests_sent: [{ type: Schema.Types.ObjectId, ref: 'User', autopopulate: {select: '-connections -requests_sent -requests_recd -password -salt'} }],
+
+    requests_recd: [{ type: Schema.Types.ObjectId, ref: 'User', autopopulate: {select: '-connections -requests_sent -requests_recd -password -salt'} }],
+
+    currentArea: String,
+
+    currentRentBand: Number,
+
+    currentNoticePeriodDays: Number
+
   });
 
 
