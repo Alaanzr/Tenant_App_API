@@ -1,5 +1,5 @@
-var User = require('mongoose').model('User');
-    // passport = require('passport');
+var User = require('mongoose').model('User'),
+    passport = require('passport');
 
 
     var getErrorMessage = function(err) {
@@ -24,10 +24,10 @@ var User = require('mongoose').model('User');
         return message;
     };
 
-    exports.renderLogin = function(req, res, next) {
+    exports.renderSignin = function(req, res, next) {
         if (!req.user) {
-            res.render('login', {
-                title: 'Log-in Form',
+            res.render('signin', {
+                title: 'Sign-in Form',
                 messages: req.flash('error') || req.flash('info')
             });
         }
@@ -36,10 +36,10 @@ var User = require('mongoose').model('User');
         }
     };
 
-    exports.renderRegister = function(req, res, next) {
+    exports.renderSignup = function(req, res, next) {
         if (!req.user) {
-            res.render('register', {
-                title: 'Register Form',
+            res.render('signup', {
+                title: 'Sign- Form',
                 messages: req.flash('error')
             });
         }
@@ -48,7 +48,8 @@ var User = require('mongoose').model('User');
         }
     };
 
-    exports.register = function(req, res, next) {
+
+    exports.signup = function(req, res, next) {
         if (!req.user) {
             var user = new User(req.body);
             var message = null;
@@ -57,9 +58,8 @@ var User = require('mongoose').model('User');
                 if (err) {
                     var message = getErrorMessage(err);
                     req.flash('error', message);
-                    return res.redirect('/register');
+                    return res.redirect('/signup');
                 }
-
                 req.login(user, function(err) {
                     if (err)
                         return next(err);
@@ -73,7 +73,7 @@ var User = require('mongoose').model('User');
         }
     };
 
-    exports.logout = function(req, res) {
+    exports.signout = function(req, res) {
         req.logout();
         res.redirect('/');
     };
@@ -92,14 +92,147 @@ exports.create = function(req, res, next) {
     });
 };
 
+exports.list = function(req, res, next) {
+    User.find({}, '-password -salt',
+        function(err, user) {
+        if (err) {
+            return next(err);
+        }
+        else {
+            res.json(user);
+        }
+    });
+};
+
+var indexOf_id = function(id, arrWithId) {
+    var test = -1;
+    arrWithId.forEach(function(item, index) {
+        if(id.toString() === item._id.toString()) {
+            test = index;
+        }
+    });
+    return test;
+};
+
 exports.read = function(req, res) {
     res.json(req.user);
 };
 
-exports.userByID = function(req, res, next, id) {
+exports.property_read = function(req, res) {
+    res.json(req.user.properties);
+};
+
+exports.user_check = function(req, res) {
+    var result = indexOf_id(req.user2._id, req.user.connections);
+    res.json(result);
+};
+
+
+
+exports.user_request = function(req, res) {
+
+    req.user.requests_sent.unshift(req.user2._id);
+    User.findByIdAndUpdate(req.user.id, { requests_sent: req.user.requests_sent },{new: true}, function(err, user) {
+        if (err) {
+            return next(err);
+        }
+        else {
+                req.user = user;
+        }
+    });
+
+    req.user2.requests_recd.unshift(req.user._id);
+    User.findByIdAndUpdate(req.user2.id, { requests_recd: req.user2.requests_recd },{new: true}, function(err, user) {
+        if (err) {
+            return next(err);
+        }
+        else {
+                req.user2 = user;
+        }
+    });
+
+    var result = [req.user,req.user2];
+    res.json(result);
+};
+
+exports.user_connect = function(req, res) {
+
+    var result = indexOf_id(req.user2._id ,req.user.requests_sent);
+
+    req.user.requests_sent.splice( result, 1 );
+
+    req.user.connections.unshift(req.user2._id);
+
+    User.findByIdAndUpdate(req.user.id, { requests_sent: req.user.requests_sent, connections: req.user.connections },{new: true}, function(err, user) {
+        if (err) {
+            return next(err);
+        }
+        else {
+            req.user = user;
+        }
+    });
+
+    var result2 = indexOf_id(req.user._id, req.user.requests_recd);
+
+    req.user.requests_recd.splice( result2, 1 );
+
+    req.user2.connections.unshift(req.user._id);
+
+    User.findByIdAndUpdate(req.user2.id, { requests_recd: req.user.requests_recd, connections: req.user2.connections },{new: true}, function(err, user) {
+        if (err) {
+            return next(err);
+        }
+        else {
+                req.user2 = user;
+        }
+    });
+
+    var result3 = [req.user,req.user2];
+    res.json(result3);
+
+};
+
+
+exports.user_disconnect = function(req, res) {
+
+    var result1 = indexOf_id(req.user2._id, req.user.connections);
+
+    req.user.connections.splice(result1, 1 );
+
+    User.findByIdAndUpdate(req.user.id, { connections: req.user.connections },{new: true}, function(err, user) {
+        if (err) {
+            return next(err);
+        }
+        else {
+                req.user = user;
+        }
+    });
+
+
+
+    var results2 = indexOf_id(req.user._id, req.user2.connections);
+
+    req.user2.connections.splice( results2, 1 );
+
+    User.findByIdAndUpdate(req.user2.id, { connections: req.user2.connections },{new: true}, function(err, user) {
+        if (err) {
+            return next(err);
+        }
+        else {
+                req.user2 = user;
+        }
+    });
+
+    var result = [req.user,req.user2];
+    res.json(result);
+
+};
+
+exports.user_id = function(req, res, next, id) {
     User.findOne({
             _id: id
         },
+        '-password -salt',
         function(err, user) {
             if (err) {
                 return next(err);
@@ -112,8 +245,25 @@ exports.userByID = function(req, res, next, id) {
     );
 };
 
+exports.user_id2 = function(req, res, next, id) {
+    User.findOne({
+            _id: id
+        },
+        '-password -salt',
+        function(err, user) {
+            if (err) {
+                return next(err);
+            }
+            else {
+                req.user2 = user;
+                next();
+            }
+        }
+    );
+};
+
 exports.update = function(req, res, next) {
-    User.findByIdAndUpdate(req.user.id, req.body, function(err, user) {
+    User.findByIdAndUpdate(req.user.id, req.body,{new: true}, function(err, user) {
         if (err) {
             return next(err);
         }
@@ -131,18 +281,6 @@ exports.delete = function(req, res, next) {
         }
         else {
             res.json(req.user);
-        }
-    });
-};
-
-
-exports.list = function(req, res, next) {
-    User.find({}, function(err, users) {
-        if (err) {
-            return next(err);
-        }
-        else {
-            res.json(users);
         }
     });
 };
