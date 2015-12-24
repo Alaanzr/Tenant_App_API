@@ -6,4 +6,8 @@ describe('tenantApp', function() {
   beforeEach(inject(function($controller) {
     ctrl = $controller('tenantApp');
   }));
+
+  it('initialises with an empty page', function() {
+    expect(ctrl.tenantAppCtrl).toBeUndefined();
+  });
 });
