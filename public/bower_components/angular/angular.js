@@ -837,7 +837,7 @@ function arrayRemove(array, value) {
  * @example
  <example module="copyExample">
  <file name="index.html">
- <div ng-controller="MainController">
+ <div ng-controller="ExampleController">
  <form novalidate class="simple-form">
  Name: <input type="text" ng-model="user.name" /><br />
  E-mail: <input type="email" ng-model="user.email" /><br />
@@ -852,7 +852,7 @@ function arrayRemove(array, value) {
 
  <script>
   angular.module('copyExample', [])
-    .controller('MainController', ['$scope', function($scope) {
+    .controller('ExampleController', ['$scope', function($scope) {
       $scope.master= {};
 
       $scope.update = function(user) {
@@ -9226,14 +9226,14 @@ function $ControllerProvider() {
  * @example
    <example module="documentExample">
      <file name="index.html">
-       <div ng-controller="MainController">
+       <div ng-controller="ExampleController">
          <p>$document title: <b ng-bind="title"></b></p>
          <p>window.document title: <b ng-bind="windowTitle"></b></p>
        </div>
      </file>
      <file name="script.js">
        angular.module('documentExample', [])
-         .controller('MainController', ['$scope', '$document', function($scope, $document) {
+         .controller('ExampleController', ['$scope', '$document', function($scope, $document) {
            $scope.title = $document[0].title;
            $scope.windowTitle = angular.element(window.document)[0].title;
          }]);
@@ -11222,7 +11222,7 @@ function $IntervalProvider() {
       * <file name="index.html">
       *   <script>
       *     angular.module('intervalExample', [])
-      *       .controller('MainController', ['$scope', '$interval',
+      *       .controller('ExampleController', ['$scope', '$interval',
       *         function($scope, $interval) {
       *           $scope.format = 'M/d/yy h:mm:ss a';
       *           $scope.blood_1 = 100;
@@ -11292,7 +11292,7 @@ function $IntervalProvider() {
       *   </script>
       *
       *   <div>
-      *     <div ng-controller="MainController">
+      *     <div ng-controller="ExampleController">
       *       <label>Date format: <input ng-model="format"></label> <hr/>
       *       Current time is: <span my-current-time="format"></span>
       *       <hr/>
@@ -18075,14 +18075,14 @@ function urlIsSameOrigin(requestUrl) {
      <file name="index.html">
        <script>
          angular.module('windowExample', [])
-           .controller('MainController', ['$scope', '$window', function($scope, $window) {
+           .controller('ExampleController', ['$scope', '$window', function($scope, $window) {
              $scope.greeting = 'Hello, World!';
              $scope.doGreeting = function(greeting) {
                $window.alert(greeting);
              };
            }]);
        </script>
-       <div ng-controller="MainController">
+       <div ng-controller="ExampleController">
          <input type="text" ng-model="greeting" aria-label="greeting" />
          <button ng-click="doGreeting(greeting)">ALERT</button>
        </div>
@@ -18593,11 +18593,11 @@ function getTypeForFilter(val) {
      <file name="index.html">
        <script>
          angular.module('currencyExample', [])
-           .controller('MainController', ['$scope', function($scope) {
+           .controller('ExampleController', ['$scope', function($scope) {
              $scope.amount = 1234.56;
            }]);
        </script>
-       <div ng-controller="MainController">
+       <div ng-controller="ExampleController">
          <input type="number" ng-model="amount" aria-label="amount"> <br>
          default currency symbol ($): <span id="currency-default">{{amount | currency}}</span><br>
          custom currency identifier (USD$): <span id="currency-custom">{{amount | currency:"USD$"}}</span>
@@ -18669,11 +18669,11 @@ function currencyFilter($locale) {
      <file name="index.html">
        <script>
          angular.module('numberFilterExample', [])
-           .controller('MainController', ['$scope', function($scope) {
+           .controller('ExampleController', ['$scope', function($scope) {
              $scope.val = 1234.56789;
            }]);
        </script>
-       <div ng-controller="MainController">
+       <div ng-controller="ExampleController">
          <label>Enter number: <input ng-model='val'></label><br>
          Default formatting: <span id='number-default'>{{val | number}}</span><br>
          No fractions: <span>{{val | number:0}}</span><br>
@@ -19180,7 +19180,7 @@ var uppercaseFilter = valueFn(uppercase);
      <file name="index.html">
        <script>
          angular.module('limitToExample', [])
-           .controller('MainController', ['$scope', function($scope) {
+           .controller('ExampleController', ['$scope', function($scope) {
              $scope.numbers = [1,2,3,4,5,6,7,8,9];
              $scope.letters = "abcdefghi";
              $scope.longNumber = 2345432342;
@@ -19189,7 +19189,7 @@ var uppercaseFilter = valueFn(uppercase);
              $scope.longNumberLimit = 3;
            }]);
        </script>
-       <div ng-controller="MainController">
+       <div ng-controller="ExampleController">
          <label>
             Limit {{numbers}} to:
             <input type="number" step="1" ng-model="numLimit">
@@ -19321,7 +19321,7 @@ function limitToFilter() {
      <file name="index.html">
        <script>
          angular.module('orderByExample', [])
-           .controller('MainController', ['$scope', function($scope) {
+           .controller('ExampleController', ['$scope', function($scope) {
              $scope.friends =
                  [{name:'John', phone:'555-1212', age:10},
                   {name:'Mary', phone:'555-9876', age:19},
@@ -19330,7 +19330,7 @@ function limitToFilter() {
                   {name:'Julie', phone:'555-8765', age:29}];
            }]);
        </script>
-       <div ng-controller="MainController">
+       <div ng-controller="ExampleController">
          <table class="friend">
            <tr>
              <th>Name</th>
@@ -19354,7 +19354,7 @@ function limitToFilter() {
      <file name="index.html">
        <script>
          angular.module('orderByExample', [])
-           .controller('MainController', ['$scope', function($scope) {
+           .controller('ExampleController', ['$scope', function($scope) {
              $scope.friends =
                  [{name:'John', phone:'555-1212', age:10},
                   {name:'Mary', phone:'555-9876', age:19},
@@ -19377,7 +19377,7 @@ function limitToFilter() {
            content: '\25bc';
          }
        </style>
-       <div ng-controller="MainController">
+       <div ng-controller="ExampleController">
          <pre>Sorting predicate = {{predicate}}; reverse = {{reverse}}</pre>
          <hr/>
          [ <a href="" ng-click="predicate=''">unsorted</a> ]
@@ -19415,7 +19415,7 @@ function limitToFilter() {
  * @example
   <example module="orderByExample">
     <file name="index.html">
-      <div ng-controller="MainController">
+      <div ng-controller="ExampleController">
         <table class="friend">
           <tr>
             <th><a href="" ng-click="reverse=false;order('name', false)">Name</a>
@@ -19434,7 +19434,7 @@ function limitToFilter() {
 
     <file name="script.js">
       angular.module('orderByExample', [])
-        .controller('MainController', ['$scope', '$filter', function($scope, $filter) {
+        .controller('ExampleController', ['$scope', '$filter', function($scope, $filter) {
           var orderBy = $filter('orderBy');
           $scope.friends = [
             { name: 'John',    phone: '555-1212',    age: 10 },
@@ -20678,14 +20678,14 @@ var inputType = {
         <file name="index.html">
          <script>
            angular.module('textInputExample', [])
-             .controller('MainController', ['$scope', function($scope) {
+             .controller('ExampleController', ['$scope', function($scope) {
                $scope.example = {
                  text: 'guest',
                  word: /^\s*\w*\s*$/
                };
              }]);
          </script>
-         <form name="myForm" ng-controller="MainController">
+         <form name="myForm" ng-controller="ExampleController">
            <label>Single word:
              <input type="text" name="input" ng-model="example.text"
                     ng-pattern="example.word" required ng-trim="false">
@@ -21310,13 +21310,13 @@ var inputType = {
         <file name="index.html">
          <script>
            angular.module('numberExample', [])
-             .controller('MainController', ['$scope', function($scope) {
+             .controller('ExampleController', ['$scope', function($scope) {
                $scope.example = {
                  value: 12
                };
              }]);
          </script>
-         <form name="myForm" ng-controller="MainController">
+         <form name="myForm" ng-controller="ExampleController">
            <label>Number:
              <input type="number" name="input" ng-model="example.value"
                     min="0" max="99" required>
@@ -21408,13 +21408,13 @@ var inputType = {
         <file name="index.html">
          <script>
            angular.module('urlExample', [])
-             .controller('MainController', ['$scope', function($scope) {
+             .controller('ExampleController', ['$scope', function($scope) {
                $scope.url = {
                  text: 'http://google.com'
                };
              }]);
          </script>
-         <form name="myForm" ng-controller="MainController">
+         <form name="myForm" ng-controller="ExampleController">
            <label>URL:
              <input type="url" name="input" ng-model="url.text" required>
            <label>
@@ -21507,13 +21507,13 @@ var inputType = {
         <file name="index.html">
          <script>
            angular.module('emailExample', [])
-             .controller('MainController', ['$scope', function($scope) {
+             .controller('ExampleController', ['$scope', function($scope) {
                $scope.email = {
                  text: 'me@example.com'
                };
              }]);
          </script>
-           <form name="myForm" ng-controller="MainController">
+           <form name="myForm" ng-controller="ExampleController">
              <label>Email:
                <input type="email" name="input" ng-model="email.text" required>
              </label>
@@ -21583,7 +21583,7 @@ var inputType = {
         <file name="index.html">
          <script>
            angular.module('radioExample', [])
-             .controller('MainController', ['$scope', function($scope) {
+             .controller('ExampleController', ['$scope', function($scope) {
                $scope.color = {
                  name: 'blue'
                };
@@ -21593,7 +21593,7 @@ var inputType = {
                };
              }]);
          </script>
-         <form name="myForm" ng-controller="MainController">
+         <form name="myForm" ng-controller="ExampleController">
            <label>
              <input type="radio" ng-model="color.name" value="red">
              Red
@@ -21645,14 +21645,14 @@ var inputType = {
         <file name="index.html">
          <script>
            angular.module('checkboxExample', [])
-             .controller('MainController', ['$scope', function($scope) {
+             .controller('ExampleController', ['$scope', function($scope) {
                $scope.checkboxModel = {
                 value1 : true,
                 value2 : 'YES'
               };
              }]);
          </script>
-         <form name="myForm" ng-controller="MainController">
+         <form name="myForm" ng-controller="ExampleController">
            <label>Value1:
              <input type="checkbox" ng-model="checkboxModel.value1">
            </label><br/>
@@ -22186,11 +22186,11 @@ function checkboxInputType(scope, element, attr, ctrl, $sniffer, $browser, $filt
       <file name="index.html">
        <script>
           angular.module('inputExample', [])
-            .controller('MainController', ['$scope', function($scope) {
+            .controller('ExampleController', ['$scope', function($scope) {
               $scope.user = {name: 'guest', last: 'visitor'};
             }]);
        </script>
-       <div ng-controller="MainController">
+       <div ng-controller="ExampleController">
          <form name="myForm">
            <label>
               User name:
@@ -22324,12 +22324,12 @@ var CONSTANT_VALUE_REGEXP = /^(true|false|\d+)$/;
       <file name="index.html">
        <script>
           angular.module('valueExample', [])
-            .controller('MainController', ['$scope', function($scope) {
+            .controller('ExampleController', ['$scope', function($scope) {
               $scope.names = ['pizza', 'unicorns', 'robots'];
               $scope.my = { favorite: 'unicorns' };
             }]);
        </script>
-        <form ng-controller="MainController">
+        <form ng-controller="ExampleController">
           <h2>Which is your favorite?</h2>
             <label ng-repeat="name in names" for="{{name}}">
               {{name}}
@@ -22405,11 +22405,11 @@ var ngValueDirective = function() {
      <file name="index.html">
        <script>
          angular.module('bindExample', [])
-           .controller('MainController', ['$scope', function($scope) {
+           .controller('ExampleController', ['$scope', function($scope) {
              $scope.name = 'Whirled';
            }]);
        </script>
-       <div ng-controller="MainController">
+       <div ng-controller="ExampleController">
          <label>Enter name: <input type="text" ng-model="name"></label><br>
          Hello <span ng-bind="name"></span>!
        </div>
@@ -22465,12 +22465,12 @@ var ngBindDirective = ['$compile', function($compile) {
      <file name="index.html">
        <script>
          angular.module('bindExample', [])
-           .controller('MainController', ['$scope', function($scope) {
+           .controller('ExampleController', ['$scope', function($scope) {
              $scope.salutation = 'Hello';
              $scope.name = 'World';
            }]);
        </script>
-       <div ng-controller="MainController">
+       <div ng-controller="ExampleController">
         <label>Salutation: <input type="text" ng-model="salutation"></label><br>
         <label>Name: <input type="text" ng-model="name"></label><br>
         <pre ng-bind-template="{{salutation}} {{name}}!"></pre>
@@ -22536,14 +22536,14 @@ var ngBindTemplateDirective = ['$interpolate', '$compile', function($interpolate
 
    <example module="bindHtmlExample" deps="angular-sanitize.js">
      <file name="index.html">
-       <div ng-controller="MainController">
+       <div ng-controller="ExampleController">
         <p ng-bind-html="myHTML"></p>
        </div>
      </file>
 
      <file name="script.js">
        angular.module('bindHtmlExample', ['ngSanitize'])
-         .controller('MainController', ['$scope', function($scope) {
+         .controller('ExampleController', ['$scope', function($scope) {
            $scope.myHTML =
               'I am an <code>HTML</code>string with ' +
               '<a href="#">links!</a> and other <em>stuff</em>';
@@ -22611,14 +22611,14 @@ var ngBindHtmlDirective = ['$sce', '$parse', '$compile', function($sce, $parse, 
  *   <file name="index.html">
  *     <script>
  *       angular.module('changeExample', [])
- *         .controller('MainController', ['$scope', function($scope) {
+ *         .controller('ExampleController', ['$scope', function($scope) {
  *           $scope.counter = 0;
  *           $scope.change = function() {
  *             $scope.counter++;
  *           };
  *         }]);
  *     </script>
- *     <div ng-controller="MainController">
+ *     <div ng-controller="ExampleController">
  *       <input type="checkbox" ng-model="confirmed" ng-change="change()" id="ng-change-example1" />
  *       <input type="checkbox" ng-model="confirmed" id="ng-change-example2" />
  *       <label for="ng-change-example2">Confirmed</label><br />
@@ -23891,7 +23891,7 @@ forEach(
      <file name="index.html">
       <script>
         angular.module('submitExample', [])
-          .controller('MainController', ['$scope', function($scope) {
+          .controller('ExampleController', ['$scope', function($scope) {
             $scope.list = [];
             $scope.text = 'hello';
             $scope.submit = function() {
@@ -23902,7 +23902,7 @@ forEach(
             };
           }]);
       </script>
-      <form ng-submit="submit()" ng-controller="MainController">
+      <form ng-submit="submit()" ng-controller="ExampleController">
         Enter text and hit enter:
         <input type="text" ng-model="text" name="text" />
         <input type="submit" id="submit" value="Submit" />
@@ -24208,7 +24208,7 @@ var ngIfDirective = ['$animate', function($animate) {
  * @example
   <example module="includeExample" deps="angular-animate.js" animations="true">
     <file name="index.html">
-     <div ng-controller="MainController">
+     <div ng-controller="ExampleController">
        <select ng-model="template" ng-options="t.name for t in templates">
         <option value="">(blank)</option>
        </select>
@@ -24221,7 +24221,7 @@ var ngIfDirective = ['$animate', function($animate) {
     </file>
     <file name="script.js">
       angular.module('includeExample', ['ngAnimate'])
-        .controller('MainController', ['$scope', function($scope) {
+        .controller('ExampleController', ['$scope', function($scope) {
           $scope.templates =
             [ { name: 'template1.html', url: 'template1.html'},
               { name: 'template2.html', url: 'template2.html'} ];
@@ -24491,11 +24491,11 @@ var ngIncludeFillContentDirective = ['$compile',
      <file name="index.html">
    <script>
      angular.module('initExample', [])
-       .controller('MainController', ['$scope', function($scope) {
+       .controller('ExampleController', ['$scope', function($scope) {
          $scope.list = [['a', 'b'], ['c', 'd']];
        }]);
    </script>
-   <div ng-controller="MainController">
+   <div ng-controller="ExampleController">
      <div ng-repeat="innerList in list" ng-init="outerIndex = $index">
        <div ng-repeat="value in innerList" ng-init="innerIndex = $index">
           <span class="example-init">list[ {{outerIndex}} ][ {{innerIndex}} ] = {{value}};</span>
@@ -24548,12 +24548,12 @@ var ngInitDirective = ngDirective({
  * <example name="ngList-directive" module="listExample">
  *   <file name="app.js">
  *      angular.module('listExample', [])
- *        .controller('MainController', ['$scope', function($scope) {
+ *        .controller('ExampleController', ['$scope', function($scope) {
  *          $scope.names = ['morpheus', 'neo', 'trinity'];
  *        }]);
  *   </file>
  *   <file name="index.html">
- *    <form name="myForm" ng-controller="MainController">
+ *    <form name="myForm" ng-controller="ExampleController">
  *      <label>List: <input name="namesInput" ng-model="names" ng-list required></label>
  *      <span role="alert">
  *        <span class="error" ng-show="myForm.namesInput.$error.required">
@@ -25592,7 +25592,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
      <file name="index.html">
        <script>
         angular.module('inputExample', [])
-          .controller('MainController', ['$scope', function($scope) {
+          .controller('ExampleController', ['$scope', function($scope) {
             $scope.val = '1';
           }]);
        </script>
@@ -25610,7 +25610,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
         Update input to see transitions when valid/invalid.
         Integer is a valid value.
        </p>
-       <form name="testForm" ng-controller="MainController">
+       <form name="testForm" ng-controller="ExampleController">
          <input ng-model="val" ng-pattern="/^\d+$/" name="anim" class="my-input"
                 aria-describedby="inputDescription" />
        </form>
@@ -25640,7 +25640,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
  * @example
  * <example name="ngModel-getter-setter" module="getterSetterExample">
      <file name="index.html">
-       <div ng-controller="MainController">
+       <div ng-controller="ExampleController">
          <form name="userForm">
            <label>Name:
              <input type="text" name="userName"
@@ -25653,7 +25653,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
      </file>
      <file name="app.js">
        angular.module('getterSetterExample', [])
-         .controller('MainController', ['$scope', function($scope) {
+         .controller('ExampleController', ['$scope', function($scope) {
            var _name = 'Brian';
            $scope.user = {
              name: function(newName) {
@@ -25777,7 +25777,7 @@ var DEFAULT_REGEXP = /(\s+|^)default(\s+|$)/;
 
   <example name="ngModelOptions-directive-blur" module="optionsExample">
     <file name="index.html">
-      <div ng-controller="MainController">
+      <div ng-controller="ExampleController">
         <form name="userForm">
           <label>Name:
             <input type="text" name="userName"
@@ -25795,7 +25795,7 @@ var DEFAULT_REGEXP = /(\s+|^)default(\s+|$)/;
     </file>
     <file name="app.js">
       angular.module('optionsExample', [])
-        .controller('MainController', ['$scope', function($scope) {
+        .controller('ExampleController', ['$scope', function($scope) {
           $scope.user = { name: 'John', data: '' };
 
           $scope.cancel = function(e) {
@@ -25834,7 +25834,7 @@ var DEFAULT_REGEXP = /(\s+|^)default(\s+|$)/;
 
   <example name="ngModelOptions-directive-debounce" module="optionsExample">
     <file name="index.html">
-      <div ng-controller="MainController">
+      <div ng-controller="ExampleController">
         <form name="userForm">
           <label>Name:
             <input type="text" name="userName"
@@ -25849,7 +25849,7 @@ var DEFAULT_REGEXP = /(\s+|^)default(\s+|$)/;
     </file>
     <file name="app.js">
       angular.module('optionsExample', [])
-        .controller('MainController', ['$scope', function($scope) {
+        .controller('ExampleController', ['$scope', function($scope) {
           $scope.user = { name: 'Igor' };
         }]);
     </file>
@@ -25859,7 +25859,7 @@ var DEFAULT_REGEXP = /(\s+|^)default(\s+|$)/;
 
   <example name="ngModelOptions-directive-getter-setter" module="getterSetterExample">
     <file name="index.html">
-      <div ng-controller="MainController">
+      <div ng-controller="ExampleController">
         <form name="userForm">
           <label>Name:
             <input type="text" name="userName"
@@ -25872,7 +25872,7 @@ var DEFAULT_REGEXP = /(\s+|^)default(\s+|$)/;
     </file>
     <file name="app.js">
       angular.module('getterSetterExample', [])
-        .controller('MainController', ['$scope', function($scope) {
+        .controller('ExampleController', ['$scope', function($scope) {
           var _name = 'Brian';
           $scope.user = {
             name: function(newName) {
@@ -26211,7 +26211,7 @@ var ngOptionsMinErr = minErr('ngOptions');
       <file name="index.html">
         <script>
         angular.module('selectExample', [])
-          .controller('MainController', ['$scope', function($scope) {
+          .controller('ExampleController', ['$scope', function($scope) {
             $scope.colors = [
               {name:'black', shade:'dark'},
               {name:'white', shade:'light', notAnOption: true},
@@ -26222,7 +26222,7 @@ var ngOptionsMinErr = minErr('ngOptions');
             $scope.myColor = $scope.colors[2]; // red
           }]);
         </script>
-        <div ng-controller="MainController">
+        <div ng-controller="ExampleController">
           <ul>
             <li ng-repeat="color in colors">
               <label>Name: <input ng-model="color.name"></label>
@@ -26908,13 +26908,13 @@ var ngOptionsDirective = ['$compile', '$parse', function($compile, $parse) {
       <file name="index.html">
         <script>
           angular.module('pluralizeExample', [])
-            .controller('MainController', ['$scope', function($scope) {
+            .controller('ExampleController', ['$scope', function($scope) {
               $scope.person1 = 'Igor';
               $scope.person2 = 'Misko';
               $scope.personCount = 1;
             }]);
         </script>
-        <div ng-controller="MainController">
+        <div ng-controller="ExampleController">
           <label>Person 1:<input type="text" ng-model="person1" value="Igor" /></label><br/>
           <label>Person 2:<input type="text" ng-model="person2" value="Misko" /></label><br/>
           <label>Number of People:<input type="text" ng-model="personCount" value="1" /></label><br/>
@@ -28036,7 +28036,7 @@ var ngStyleDirective = ngDirective(function(scope, element, attr) {
  * @example
   <example module="switchExample" deps="angular-animate.js" animations="true">
     <file name="index.html">
-      <div ng-controller="MainController">
+      <div ng-controller="ExampleController">
         <select ng-model="selection" ng-options="item for item in items">
         </select>
         <code>selection={{selection}}</code>
@@ -28051,7 +28051,7 @@ var ngStyleDirective = ngDirective(function(scope, element, attr) {
     </file>
     <file name="script.js">
       angular.module('switchExample', ['ngAnimate'])
-        .controller('MainController', ['$scope', function($scope) {
+        .controller('ExampleController', ['$scope', function($scope) {
           $scope.items = ['settings', 'home', 'other'];
           $scope.selection = $scope.items[0];
         }]);
@@ -28210,12 +28210,12 @@ var ngSwitchDefaultDirective = ngDirective({
                          '</div>'
              };
          })
-         .controller('MainController', ['$scope', function($scope) {
+         .controller('ExampleController', ['$scope', function($scope) {
            $scope.title = 'Lorem Ipsum';
            $scope.text = 'Neque porro quisquam est qui dolorem ipsum quia dolor...';
          }]);
        </script>
-       <div ng-controller="MainController">
+       <div ng-controller="ExampleController">
          <input ng-model="title" aria-label="title"> <br/>
          <textarea ng-model="text" aria-label="text"></textarea> <br/>
          <pane title="{{title}}">{{text}}</pane>
@@ -28505,7 +28505,7 @@ var SelectController =
  *
  * <example name="static-select" module="staticSelect">
  * <file name="index.html">
- * <div ng-controller="MainController">
+ * <div ng-controller="ExampleController">
  *   <form name="myForm">
  *     <label for="singleSelect"> Single select: </label><br>
  *     <select name="singleSelect" ng-model="data.singleSelect">
@@ -28535,7 +28535,7 @@ var SelectController =
  * </file>
  * <file name="app.js">
  *  angular.module('staticSelect', [])
- *    .controller('MainController', ['$scope', function($scope) {
+ *    .controller('ExampleController', ['$scope', function($scope) {
  *      $scope.data = {
  *       singleSelect: null,
  *       multipleSelect: [],
@@ -28552,7 +28552,7 @@ var SelectController =
  * ### Using `ngRepeat` to generate `select` options
  * <example name="ngrepeat-select" module="ngrepeatSelect">
  * <file name="index.html">
- * <div ng-controller="MainController">
+ * <div ng-controller="ExampleController">
  *   <form name="myForm">
  *     <label for="repeatSelect"> Repeat select: </label>
  *     <select name="repeatSelect" id="repeatSelect" ng-model="data.repeatSelect">
@@ -28565,7 +28565,7 @@ var SelectController =
  * </file>
  * <file name="app.js">
  *  angular.module('ngrepeatSelect', [])
- *    .controller('MainController', ['$scope', function($scope) {
+ *    .controller('ExampleController', ['$scope', function($scope) {
  *      $scope.data = {
  *       repeatSelect: null,
  *       availableOptions: [
@@ -28584,7 +28584,7 @@ var SelectController =
  *
  * <example name="select-with-default-values" module="defaultValueSelect">
  * <file name="index.html">
- * <div ng-controller="MainController">
+ * <div ng-controller="ExampleController">
  *   <form name="myForm">
  *     <label for="mySelect">Make a choice:</label>
  *     <select name="mySelect" id="mySelect"
@@ -28597,7 +28597,7 @@ var SelectController =
  * </file>
  * <file name="app.js">
  *  angular.module('defaultValueSelect', [])
- *    .controller('MainController', ['$scope', function($scope) {
+ *    .controller('ExampleController', ['$scope', function($scope) {
  *      $scope.data = {
  *       availableOptions: [
  *         {id: '1', name: 'Option A'},
