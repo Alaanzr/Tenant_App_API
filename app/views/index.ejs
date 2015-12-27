@@ -2,16 +2,32 @@
 <html>
 <head>
   <title><% title %></title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <% if (userFullName) { %>
-  <h2>Hello <%= userFullName %></h2>
-  <a href="/signout">Sign out</a>
-  <% } else { %>
-  <a href="/signup">Signup</a>
-  <a href="/signin">Signin</a>
-  <% } %>
-  <br>
+
+
+  <section ng-view></section>
+
+  <script type="text/javascript">
+    window.user = <%- user || 'null' %>
+  </script>
+
+  <script type="text/javascript" src="/bower_components/angular/angular.js"></script>
+  <script type="text/javascript" src="/bower_components/angular-route/angular-route.js"></script>
+  <script type="text/javascript" src="/bower_components/angular-resource/angular-resource.js"></script>
+  <script type="text/javascript" src="/articles/articles.client.module.js"></script>
+  <script type="text/javascript" src="/articles/controllers/articles.client.controller.js"></script>
+  <script type="text/javascript" src="/articles/services/articles.client.service.js"></script>
+  <script type="text/javascript" src="/articles/config/articles.client.routes.js"></script>
+  <script type="text/javascript" src="/main/main.client.module.js"></script>
+  <script type="text/javascript" src="/main/controllers/main.client.controller.js"></script>
+  <script type="text/javascript" src="/main/config/main.client.routes.js"></script>
+  <script type="text/javascript" src="/users.client.module.js"></script>
+  <script type="text/javascript" src="/services/authentication.client.service.js"></script>
+  <script type="text/javascript" src="/application.js"></script>
+
 
 </body>
 </html>
