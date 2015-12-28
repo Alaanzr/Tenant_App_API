@@ -1,6 +1,6 @@
 var mainApplicationModuleName = 'tenantApp';
 
-var mainApplicationModule = angular.module(mainApplicationModuleName, ['ngResource', 'ngRoute', 'users', 'main', 'articles']);
+var mainApplicationModule = angular.module(mainApplicationModuleName, ['ngResource', 'ngRoute', 'users', 'main', 'articles', 'properties']);
 
 mainApplicationModule.config(['$locationProvider', function($locationProvider) {
   $locationProvider.hashPrefix('!');

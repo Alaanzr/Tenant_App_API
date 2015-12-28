@@ -12,8 +12,9 @@
       <li><a href="/#!/articles/create">Create Article</a></li>
       <li><a href="/#!/properties/create">Add Property</a></li>
     </ul>
-    <h3> User Properties </h3>
+
     <ul class="list-group">
+          <h3> User Properties </h3>
         <li class="list-group-item" ng-repeat="property in authentication.user.properties">
           <h4> Property # {{$index + 1}} </h4>
           <p> Post Code: {{property.post_code}} </p>
