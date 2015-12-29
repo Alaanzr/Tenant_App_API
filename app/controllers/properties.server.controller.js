@@ -40,11 +40,11 @@
        });
      } else {
        res.json(property);
-       User.findByIdAndUpdate(req.user.id, { $push: {properties: property.id} }, function(err, user) {
+       User.findByIdAndUpdate(req.user._id, { $push: {"properties": property.id} }, {safe: true, upsert: true, new: true }, function(err, user) {
          if (err) {
-           return next(err);
+           console.log(err);
          } else {
-           user.save();
+           console.log(user);
          }
        });
      }
