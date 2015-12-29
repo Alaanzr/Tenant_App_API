@@ -25,7 +25,7 @@
       }
       else {
         console.log(req.user);
-        res.json(property);
+        res.json(property);        
       }
     });
   };
