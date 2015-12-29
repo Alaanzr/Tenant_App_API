@@ -3,36 +3,6 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 var autopopulate = require("mongoose-autopopulate");
 
-
-var PropertySchema = new Schema ({
-
-  location_area: String,
-
-  post_code: String,
-
-  street_name: String,
-
-  landlord_name: String,
-
-  landlord_contact_details: String,
-
-  contract_start: Date,
-
-  contract_end :Date,
-
-  property_type: String,
-
-  number_of_flatmates: Number,
-
-  monthly_cost: Number,
-
-  deposit_amount: Number,
-
-  inclusive: Boolean
-
-});
-
-
 var UserSchema = new Schema({
 
     firstName: String,
@@ -141,7 +111,5 @@ var UserSchema = new Schema({
   });
 
 UserSchema.plugin(autopopulate);
-
-var Property = mongoose.model('Property', PropertySchema);
 
 var User = mongoose.model('User', UserSchema);

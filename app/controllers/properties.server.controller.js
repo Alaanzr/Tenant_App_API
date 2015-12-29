@@ -1,34 +1,68 @@
  var Property = require('mongoose').model('Property'), User = require('mongoose').model('User');
 
- exports.user_id = function(req, res, next, id) {
-     User.findOne({
-             _id: id
-         },
-         '-password -salt',
-         function(err, user) {
-             if (err) {
-                 return next(err);
-             }
-             else {
-                 req.user = user;
-                 next();
-             }
+
+ var getErrorMessage = function(err) {
+   if (err.errors) {
+     for (var errName in err.errors) {
+       if (err.errors[errName].message)
+       return err.errors[errName].message;
+       }
+     } else {
+       return 'Unknown server error';
+     }
+ };
+ //
+ // exports.user_id = function(req, res, next, id) {
+ //     User.findOne({
+ //             _id: id
+ //         },
+ //         '-password -salt',
+ //         function(err, user) {
+ //             if (err) {
+ //                 return next(err);
+ //             }
+ //             else {
+ //                 req.user = user;
+ //                 next();
+ //             }
+ //         }
+ //     );
+ // };
+
+ exports.createUserProperty = function(req, res) {
+   var property = new Property(req.body);
+   property.creator = req.user;
+
+   property.save(function(err) {
+     if (err) {
+       return res.status(400).send({
+         message: getErrorMessage(err)
+       });
+     } else {
+       res.json(property);
+       User.findByIdAndUpdate(req.user.id, { $push: {properties: property.id} }, function(err, user) {
+         if (err) {
+           return next(err);
+         } else {
+           user.save();
          }
-     );
+       });
+     }
+   });
  };
 
-  exports.createUserProperty = function(req, res, next) {
-    var property = new Property(req.body);
-    property.save(function(err) {
-      if (err) {
-        return next(err);
-      }
-      else {
-        console.log(req.user);
-        res.json(property);        
-      }
-    });
-  };
+  // exports.createUserProperty = function(req, res, next) {
+  //   var property = new Property(req.body);
+  //   property.save(function(err) {
+  //     if (err) {
+  //       return next(err);
+  //     }
+  //     else {
+  //       console.log(req.user);
+  //       res.json(property);
+  //     }
+  //   });
+  // };
 
   // exports.test = function() {
   //   console.log('hi');
