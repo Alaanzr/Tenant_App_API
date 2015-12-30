@@ -19,6 +19,7 @@ body {
    background-color:#232B2B;
 }
 
+
 .center {
 	margin: 0 auto;
 	max-width: 550px;
@@ -29,9 +30,13 @@ body {
 	margin: 0 auto;
 }
 
-.fa {
+.faicon {
   margin: 8px 10%;
   color: white;
+}
+
+.fablack {
+		color: black;
 }
 
 #container {
@@ -40,6 +45,11 @@ body {
 	position: relative;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
 	            0 25px 50px 0 rgba(0, 0, 0, 0.1);
+}
+
+.list-group-item {
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
+							0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }
 
 h1 {

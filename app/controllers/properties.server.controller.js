@@ -1,6 +1,5 @@
  var Property = require('mongoose').model('Property'), User = require('mongoose').model('User');
 
-
  var getErrorMessage = function(err) {
    if (err.errors) {
      for (var errName in err.errors) {
@@ -11,23 +10,6 @@
        return 'Unknown server error';
      }
  };
- //
- // exports.user_id = function(req, res, next, id) {
- //     User.findOne({
- //             _id: id
- //         },
- //         '-password -salt',
- //         function(err, user) {
- //             if (err) {
- //                 return next(err);
- //             }
- //             else {
- //                 req.user = user;
- //                 next();
- //             }
- //         }
- //     );
- // };
 
  exports.createUserProperty = function(req, res) {
    var property = new Property(req.body);
@@ -50,40 +32,6 @@
      }
    });
  };
-
-  // exports.createUserProperty = function(req, res, next) {
-  //   var property = new Property(req.body);
-  //   property.save(function(err) {
-  //     if (err) {
-  //       return next(err);
-  //     }
-  //     else {
-  //       console.log(req.user);
-  //       res.json(property);
-  //     }
-  //   });
-  // };
-
-  // exports.test = function() {
-  //   console.log('hi');
-  //   createUserProperty();
-  // };
-
-  // exports.createUserProperty = function(req, res, next) {
-  //   var property = new Property(req.body);
-  //   property.save(function(err) {
-  //     if (err) {
-  //       return next(err);
-  //     }
-  //     else {
-  //       console.log('***************');
-  //       console.log(window.user);
-  //       console.log('***************');
-  //       User.findByIdAndUpdate(user._id, { properties: user.properties.push(res.json(property._id)) });
-  //       res.json(user);
-  //     }
-  //   });
-  // };
 
   exports.list = function(req,res, next) {
     Property.find( {}, function(err, property) {
