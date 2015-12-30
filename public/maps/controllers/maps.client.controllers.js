@@ -15,7 +15,7 @@ angular.module('maps').controller('MapsController', ['$scope', '$http', 'geoloca
     var userData = {
       gender: $scope.formData.gender,
       age: $scope.formData.age,
-      desiredLocations: [$scope.formData.desiredLocations],
+      desiredLocations: $scope.formData.desiredLocations,
       location: [$scope.formData.longitude, $scope.formData.latitude],
       htmlverified: $scope.formData.htmlverifed
     };
