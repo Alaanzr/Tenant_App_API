@@ -18,9 +18,9 @@
             <div>
               <ul class="nav navbar-nav" ng-show="authentication.user">
                 <a href="#!/"><i class="fa fa-home faicon fa-2x"></i></a>
-                <a href="#!/articles"><i class="fa fa-user faicon fa-2x"></i></a>
-                <a href="#!/articles/create"><i class="fa fa-cogs faicon fa-2x"></i></a>
-                <a href="#"><i class="fa fa-file faicon fa-2x"></i></a>
+                <a href="#!/properties/create"><i class="fa fa-user faicon fa-2x"></i></a>
+                <a href="#!/"><i class="fa fa-cogs faicon fa-2x"></i></a>
+                <a href="#/"><i class="fa fa-file faicon fa-2x"></i></a>
               </ul>
               <ul class="nav navbar-nav navbar-right" ng-show="!authentication.user">
                 <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -50,10 +50,6 @@
   <script type="text/javascript" src="/bower_components/angular/angular.js"></script>
   <script type="text/javascript" src="/bower_components/angular-route/angular-route.js"></script>
   <script type="text/javascript" src="/bower_components/angular-resource/angular-resource.js"></script>
-  <script type="text/javascript" src="/articles/articles.client.module.js"></script>
-  <script type="text/javascript" src="/articles/controllers/articles.client.controller.js"></script>
-  <script type="text/javascript" src="/articles/services/articles.client.service.js"></script>
-  <script type="text/javascript" src="/articles/config/articles.client.routes.js"></script>
   <script type="text/javascript" src="/main/main.client.module.js"></script>
   <script type="text/javascript" src="/main/controllers/main.client.controller.js"></script>
   <script type="text/javascript" src="/main/config/main.client.routes.js"></script>
