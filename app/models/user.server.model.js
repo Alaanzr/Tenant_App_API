@@ -4,11 +4,15 @@ var mongoose = require('mongoose'),
 var autopopulate = require("mongoose-autopopulate");
 
 var UserSchema = new Schema({
-
     firstName: String,
-
     lastName: String,
-
+    gender: String,
+    age: Number,
+    desiredLocations: [{type: String}],
+    location: {
+      type: [Number] // [Long, Lat]
+    },
+    htmlverified: String,
     email: {
               type: String,
               match: [/.+\@.+\..+/,
@@ -29,33 +33,19 @@ var UserSchema = new Schema({
               'Password should be longer']
     },
     salt: {type: String},
-
-    provider: {type: String, required: 'Provider is required'},
-
+    provider: {type: String},
     providerId: String,
-
     providerData: {},
-
     created: {type: Date, default: Date.now},
-
     profile_picture: String,
-
     properties: [{ type: Schema.Types.ObjectId, ref: 'Property', autopopulate: true }],
-
     connections: [{ type: Schema.Types.ObjectId, ref: 'User', autopopulate: {select: '-connections -requests_sent -requests_recd -password -salt'} }],
-
     requests_sent: [{ type: Schema.Types.ObjectId, ref: 'User', autopopulate: {select: '-connections -requests_sent -requests_recd -password -salt'} }],
-
     requests_recd: [{ type: Schema.Types.ObjectId, ref: 'User', autopopulate: {select: '-connections -requests_sent -requests_recd -password -salt'} }],
-
     currentArea: String,
-
     currentRentBand: Number,
-
     currentNoticePeriodDays: Number
-
   });
-
 
   UserSchema.virtual('fullName').get(
     function() {
@@ -111,5 +101,9 @@ var UserSchema = new Schema({
   });
 
 UserSchema.plugin(autopopulate);
+
+// Indexes this schema in 2dsphere format, which is critical for running proximity searches.
+// Allows MongoDB and Mongoose to run geospatial queries on our user data.
+UserSchema.index({location: '2dsphere'});
 
 var User = mongoose.model('User', UserSchema);
