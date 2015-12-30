@@ -10,7 +10,7 @@ var UserSchema = new Schema({
     age: Number,
     desiredLocations: [{type: String}],
     location: {
-      type: [Number] // [Long, Lat]
+      type: [Number], // [Long, Lat]
     },
     htmlverified: String,
     email: {

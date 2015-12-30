@@ -1,4 +1,4 @@
-angular.module('maps').controller('MapsController', ['$scope', '$http', 'geolocation', 'Authentication', function($scope, $http, geolocation, Authentication) {
+angular.module('maps').controller('MapsController', ['$scope', '$http', 'geolocation', 'Authentication', 'gservice', function($scope, $http, geolocation, Authentication, gservice) {
   $scope.authentication = Authentication;
   // Initializes Variables
   $scope.formData = {};
@@ -28,6 +28,7 @@ angular.module('maps').controller('MapsController', ['$scope', '$http', 'geoloca
     $scope.formData.gender = "";
     $scope.formData.age = "";
     $scope.formData.desiredLocations = "";
+    gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
   }).error(function(data) {
     console.log('Error:' + data);
   });
