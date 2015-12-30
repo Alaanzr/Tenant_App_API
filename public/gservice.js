@@ -47,11 +47,11 @@ angular.module('gservice', []).factory('gservice', ['$http', function($http) {
       '<br><b>Desired Locations</b>: ' + user.desiredLocations +
       '</p>';
 
-      console.log('****');
-      console.log(user);
-      console.log(user.location);
-      console.log(user.location[0]);
-      console.log(user.location[1]);
+      // console.log('****');
+      // console.log(user);
+      // console.log(user.location);
+      // console.log(user.location[0]);
+      // console.log(user.location[1]);
       // Converts each of the JSON records into Google Maps Location format [Lat, Lng]
       locations.push({
         latlon: new google.maps.LatLng(user.location[1], user.location[0]),
