@@ -1,54 +1,65 @@
-<section ng-controller="PropertyController">
-  <script type="text/javascript" src="../../../app/views/index.ejs">
-  </script>
-  <h1>New Property</h1>
-  <form ng-submit="createUserProperty()" novalidate>
-    <div>
-      <label for="post code">Post Code</label>
-      <div>
-        <input type="text" ng-model="post_code" id="post_code" placeholder="Post code required">
-      </div>
-    </div>
-    <div>
-      <label for="street name">Street Name</label>
-    <div>
-      <input type="text" ng-model="street_name" id="street_name"></input>
-    </div>
-  </div>
-  <div>
-    <div>
-      <label for="property type">Property Type</label>
-    <div>
-      <select ng-model="property_type" id="property_type">
-        <option selected> Flat </option>
-        <option> House </option>
-      </select>
-    </div>
-  </div>
-  <div>
-    <div>
-      <label for="landlord name">Landlord name</label>
-    <div>
-      <input type="text" ng-model="landlord_name" id="landlord_name"></input>
-    </div>
-  </div>
-  <div>
-    <label for="contract start">Contract Start</label>
-  <div>
-    <input type="date" ng-model="contract_start" id="contract_start"></input>
-  </div>
-</div>
-<div>
-  <label for="contract end">Contract End</label>
-<div>
-  <input type="date" ng-model="contract_end" id="contract_end"></input>
-</div>
-</div>
-  <div>
-    <input type="submit">
-  </div>
-  <div ng-show="error">
-    <strong ng-bind="error"></strong>
-  </div>
-  </form>
-</section>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+
+<html>
+  <head>
+    <title></title>
+    <!--<section ng-controller="PropertyController">-->
+    <!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">-->
+    <script type="text/javascript" src="../../../app/views/index.ejs"> </script>
+  </head>
+
+  <body ng-controller="PropertyController">
+    <h1>New Property</h1>
+    <div class="container">
+      <form ng-submit="createUserProperty()" novalidate>
+        <div>
+          <label for="post code">Post Code</label>
+          <div>
+            <input type="text" ng-model="post_code" id="post_code" placeholder="Post code required">
+          </div>
+        </div>
+        <div>
+          <label for="street name">Street Name</label>
+          <div>
+            <input type="text" ng-model="street_name" id="street_name"></input>
+          </div>
+        </div>
+        <div>
+          <div>
+            <label for="property type">Property Type</label>
+            <div>
+              <select ng-model="property_type" id="property_type">
+                <option selected> Flat </option>
+                <option> House </option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <div>
+              <label for="landlord name">Landlord name</label>
+              <div>
+                <input type="text" ng-model="landlord_name" id="landlord_name"></input>
+              </div>
+            </div>
+            <div>
+              <label for="contract start">Contract Start</label>
+              <div>
+                <input type="date" ng-model="contract_start" id="contract_start"></input>
+              </div>
+            </div>
+            <div>
+              <label for="contract end">Contract End</label>
+              <div>
+                <input type="date" ng-model="contract_end" id="contract_end"></input>
+              </div>
+            </div>
+            <div>
+              <input type="submit">
+            </div>
+            <div ng-show="error">
+              <strong ng-bind="error"></strong>
+            </div>
+      </form>
+          </div>
+  </body>
+</html>
