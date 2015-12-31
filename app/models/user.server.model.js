@@ -6,9 +6,7 @@ var autopopulate = require("mongoose-autopopulate");
 var UserSchema = new Schema({
     firstName: String,
     lastName: String,
-    gender: String,
-    age: Number,
-    desiredLocations: [{type: String}],
+    desiredLocation: String,
     location: {
       type: [Number], // [Long, Lat]
     },
