@@ -1,18 +1,20 @@
 
 <section ng-controller="mapsController">
-    <script type="text/javascript" src="../../../app/views/index.ejs"> </script>
-<div class="container">
-  <h1> Maps </h1>
-  <div class="header">
-    <h3 class="text-muted"> Tenant Finder Search </h3>
-  </div>
-  <!-- Map and Side Panel -->
-  <div class="row content">
-    <!-- Google Map -->
-    <div class="col-md-7">
-      <div id="map" style="width:500px; height:500px">map</div>
+  <script type="text/javascript" src="../../../app/views/index.ejs"> </script>
+  <div class="container">
+    <h1> Maps </h1>
+    <div class="header">
+      <h3 class="text-muted"> Tenant Finder Search </h3>
     </div>
-
+    <!-- Map and Side Panel -->
+    <div class="row content">
+      <!-- Google Map -->
+      <!--<div class="col-md-7">-->
+        <!--<div id="map" style="width:500px; height:500px">map</div>-->
+      <!--</div>-->
+      <div class="col-md-7">
+        <div id="map">map<img src="holder.js/645x645"></div>
+      </div>
       <div id="map"></div>
       <div id="text"></div>
       <!--<div id="map"><img-->
@@ -28,7 +30,7 @@
           <!-- Panel Body -->
           <div class="panel-body">
             <!-- Creates Form (novalidate disables HTML validation, Angular will control) -->
-            <form name ="addForm" novalidate>
+            <form name ng-submit="searchMates()" novalidate>
               <div class="form-group">
                 <label for="language">Desired Locations</label>
                 <input type="text" class="form-control" id="desired_locations" placeholder="Insert locations here" ng-model="formData.desLocations" required>
