@@ -38,13 +38,14 @@ angular.module('gservice', []).factory('gservice', ['$http', function($http) {
     // Loop through all of the JSON entries provided in the response
     for(var i=0; i < response.length; i++) {
       var user = response[i];
+      console.log(user.username);
+      console.log(user.desiredLocation);
+      console.log(user.id);
 
       // Create popup windows for each record
       var contentString =
       '<p><b>Username</b>: ' + user.username +
-      '<br><b>Age</b>: ' + user.age +
-      '<br><b>Gender</b>: ' + user.gender +
-      '<br><b>Desired Locations</b>: ' + user.desiredLocations +
+      '<br><b>Desired Locations</b>: ' + user.desiredLocation +
       '</p>';
 
       // console.log('****');
@@ -102,7 +103,7 @@ angular.module('gservice', []).factory('gservice', ['$http', function($http) {
     var initialLocation = new google.maps.LatLng(latitude, longitude);
     var marker = new google.maps.Marker({
       position: initialLocation,
-      animation: google.maps.Animation.BOUNCE,
+      animation: google.maps.Animation,
       map: map,
       icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
     });

@@ -22,43 +22,17 @@
                     <form name ="addForm" novalidate>
                         <!-- Text Boxes and Other User Inputs. Note ng-model binds the values to Angular $scope -->
                         <div class="form-group">
-                            <span class="text-muted">All fields required</span></label>
+                            <label for="language">Desired Location</label>
+                            <input type="text" class="form-control" id="desired_location" placeholder="Insert postcode" ng-model="formData.desiredLocation" required>
                         </div>
-                        <label class="radio control-label">Gender</label>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="radiomale" value="Male" ng-model="formData.gender">
-                                Male
-                            </label>
-                        </div>
-                        <div class="radio" required>
-                            <label>
-                                <input type="radio" name="optionsRadios" id="radiofemale" value="Female" ng-model="formData.gender">
-                                Female
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="radioother" value="What's it to ya?" ng-model="formData.gender">
-                                What's it to ya?
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <label for="age">Age</label>
-                            <input type="number" class="form-control" id="age" placeholder="18" ng-model="formData.age" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="language">Desired Locations</label>
-                            <input type="text" class="form-control" id="desired_locations" placeholder="Insert locations here" ng-model="formData.desiredLocations" required>
-                        </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="latitude">Latitude</label>
                             <input type="text" class="form-control" id="latitude" value="39.500" ng-model="formData.latitude" readonly>
                         </div>
                         <div class="form-group">
                             <label for="longitude">Longitude</label>
                             <input type="text" class="form-control" id="longitude" value="-98.350" ng-model="formData.longitude" readonly>
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label for="verified">HTML5 Verified Location? <span><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-refresh"></span></button></span></label>
                             <input type="text" class="form-control" id="verified" placeholder= "Nope (Thanks for spamming my map...)" ng-model="formData.htmlverified" readonly>
