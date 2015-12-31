@@ -26,6 +26,7 @@
     "angular-route": "~1.4.8",
     "angular-resource": "~1.4.8",
     "angularjs-geolocation": "~0.1.1",
-    "modernizr": "~3.2.0"
+    "modernizr": "~3.2.0",
+    "angular-geolocation": "*"
   }
 }
