@@ -1,4 +1,4 @@
-angular.module('maps').controller('MapsController', ['$scope', '$http', 'geolocation', 'Authentication', 'gservice', function($scope, $http, geolocation, Authentication, gservice) {
+angular.module('maps').controller('MapsController', ['$scope', '$http', 'geolocation', 'Authentication', 'gservice', '$rootScope', function($scope, $http, geolocation, Authentication, gservice, $rootScope) {
   $scope.authentication = Authentication;
   // Initializes Variables
   $scope.formData = {};
@@ -9,6 +9,17 @@ angular.module('maps').controller('MapsController', ['$scope', '$http', 'geoloca
   // Set initial coordinates to the center of the US
   $scope.formData.latitude = 39.500;
   $scope.formData.longitude = -98.350;
+
+  // Get coordinates based on mouse click
+  $rootScope.$on("clicked", function() {
+
+    // Run the gservice functions associated with identifying coordinates
+    $scope.$apply(function() {
+      $scope.formData.latitude = parseFloat(gservice.clickLat).toFixed(3);
+      $scope.formData.longitude = parseFloat(gservice.clickLong).toFixed(3);
+      $scope.formData.htmlverified = "Nope (Thanks for spamming my map...)";
+    });
+  });
 
   // Updates the user document in MongoDB
   $scope.updateUserDetails = function() {

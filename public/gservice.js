@@ -1,5 +1,5 @@
 // Creates the gservice factory - our primary means to interact with Google Maps
-angular.module('gservice', []).factory('gservice', ['$http', function($http) {
+angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', function($http, $rootScope) {
 
   // The service our factory will return
   var googleMapService = {};
@@ -133,6 +133,11 @@ angular.module('gservice', []).factory('gservice', ['$http', function($http) {
       // Create a new red marker and move to it
       lastMarker = marker;
       map.panTo(marker.position);
+
+      // Update broadcasted variable (lets the panel know to change their lat, long values)
+      googleMapService.clickLat = marker.getPosition().lat();
+      googleMapService.clickLong = marker.getPosition().lng();
+      $rootScope.$broadcast("clicked");
     });
   };
 
