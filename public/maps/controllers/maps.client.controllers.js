@@ -10,6 +10,18 @@ angular.module('maps').controller('MapsController', ['$scope', '$http', 'geoloca
   $scope.formData.latitude = 39.500;
   $scope.formData.longitude = -98.350;
 
+  // Get user's actual coordinates based on HTML5 at window load
+  geolocation.getLocation().then(function(data) {
+    // Set the latitude and longitude equal to the HTML5 coordinates
+    coords = {lat:data.coords.latitude, long:data.coords.longitude};
+    $scope.formData.longitude = parseFloat(coords.long).toFixed(3);
+    $scope.formData.latitude = parseFloat(coords.lat).toFixed(3);
+
+    $scope.formData.htmlverified = "Location verified. Accurate geolocation coordinates provided";
+
+    gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
+  });
+
   // Get coordinates based on mouse click
   $rootScope.$on("clicked", function() {
 
