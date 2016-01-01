@@ -23,6 +23,11 @@ angular.module('maps').controller('MapsController', ['$scope', '$http', 'geoloca
 
   // Updates the user document in MongoDB
   $scope.updateUserDetails = function() {
+
+      if(!$rootScope.authentication) {
+        window.alert("Please log in");
+      }
+
     var userData = {
       desiredLocation: $scope.formData.desiredLocation,
       location: [$scope.formData.longitude, $scope.formData.latitude],
