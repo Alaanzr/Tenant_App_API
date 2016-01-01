@@ -13,9 +13,7 @@ angular.module('maps').controller('MapsController', ['$scope', '$http', 'geoloca
   // Updates the user document in MongoDB
   $scope.updateUserDetails = function() {
     var userData = {
-      gender: $scope.formData.gender,
-      age: $scope.formData.age,
-      desiredLocations: $scope.formData.desiredLocations,
+      desiredLocation: $scope.formData.desiredLocation,
       location: [$scope.formData.longitude, $scope.formData.latitude],
       htmlverified: $scope.formData.htmlverifed
     };
@@ -24,10 +22,7 @@ angular.module('maps').controller('MapsController', ['$scope', '$http', 'geoloca
     $http.put('/users/' + $scope.authentication.user.id, userData).success(function(data) {
 
     // Once complete, clear the form (except location)
-    $scope.formData.gender = "";
-    $scope.formData.gender = "";
-    $scope.formData.age = "";
-    $scope.formData.desiredLocations = "";
+    $scope.formData.desiredLocation = "";
     gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
   }).error(function(data) {
     console.log('Error:' + data);

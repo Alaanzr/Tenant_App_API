@@ -54,6 +54,7 @@ angular.module('gservice', []).factory('gservice', ['$http', function($http) {
       // console.log(user.location[0]);
       // console.log(user.location[1]);
       // Converts each of the JSON records into Google Maps Location format [Lat, Lng]
+      console.log(user);
       locations.push({
         latlon: new google.maps.LatLng(user.location[1], user.location[0]),
         message: new google.maps.InfoWindow({
@@ -95,6 +96,7 @@ angular.module('gservice', []).factory('gservice', ['$http', function($http) {
       // For each marker created, add a listener that checks for clicks
       google.maps.event.addListener(marker, 'click', function(e) {
         currentSelectedMarker = n;
+        console.log('hi');
         n.message.open(map, marker);
       });
     });
@@ -103,7 +105,7 @@ angular.module('gservice', []).factory('gservice', ['$http', function($http) {
     var initialLocation = new google.maps.LatLng(latitude, longitude);
     var marker = new google.maps.Marker({
       position: initialLocation,
-      animation: google.maps.Animation,
+      animation: google.maps.Animation.BOUNCE,
       map: map,
       icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
     });
