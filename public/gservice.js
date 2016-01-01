@@ -10,6 +10,8 @@ angular.module('gservice', []).factory('gservice', ['$http', function($http) {
   // Selected Location (initialize to center of America)
   var selectedLat = 39.50;
   var selectedLong = -98.35;
+  googleMapService.clickLat = 0;
+  googleMapService.clickLong = 0;
 
   // Refresh the Map with new data. The function will take new lat and long co-ords
   googleMapService.refresh = function(latitude, longitude) {
@@ -110,6 +112,28 @@ angular.module('gservice', []).factory('gservice', ['$http', function($http) {
       icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
     });
     lastMarker = marker;
+
+    // Function for moving to a selected Location
+    map.panTo(new google.maps.LatLng(latitude, longitude));
+
+    // Clicking on the Map moves the bouncing red marker
+    google.maps.event.addListener(map, 'click', function(e) {
+      var marker = new google.maps.Marker({
+        position: e.latLng,
+        animation: google.maps.Animation.BOUNCE,
+        map: map,
+        icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+      });
+
+      // Delete the old red marker when a new spot is selected
+      if(lastMarker) {
+        lastMarker.setMap(null);
+      }
+
+      // Create a new red marker and move to it
+      lastMarker = marker;
+      map.panTo(marker.position);
+    });
   };
 
   // Refresh the page upon window load. Use the initial latitude and longitude
