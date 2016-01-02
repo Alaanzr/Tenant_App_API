@@ -107,7 +107,7 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
     var initialLocation = new google.maps.LatLng(latitude, longitude);
     var marker = new google.maps.Marker({
       position: initialLocation,
-      animation: google.maps.Animation.BOUNCE,
+      animation: google.maps.Animation,
       map: map,
       icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
     });
