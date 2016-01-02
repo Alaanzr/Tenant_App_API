@@ -13,50 +13,50 @@ angular.module('maps').controller('MapsController', ['$scope', '$http', 'geoloca
   // Get user's actual coordinates based on HTML5 at window load
   geolocation.getLocation().then(function(data) {
     // Set the latitude and longitude equal to the HTML5 coordinates
-    coords = {lat:data.coords.latitude, long:data.coords.longitude};
-    $scope.formData.longitude = parseFloat(coords.long).toFixed(3);
-    $scope.formData.latitude = parseFloat(coords.lat).toFixed(3);
+  coords = {lat:data.coords.latitude, long:data.coords.longitude};
+  $scope.formData.longitude = parseFloat(coords.long).toFixed(3);
+  $scope.formData.latitude = parseFloat(coords.lat).toFixed(3);
 
-        $scope.formData.htmlverified = "Yep (Thanks for giving us real data!)";
-    console.log(coords);
-    gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
+  console.log(coords);
+  gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
+});
+
+// Get coordinates based on mouse click
+$rootScope.$on("clicked", function() {
+
+  // Run the gservice functions associated with identifying coordinates
+  //$scope.$apply(function() {
+    $scope.formData.latitude = parseFloat(gservice.clickLat).toFixed(3);
+    latitude = $scope.formData.latitude;
+    $scope.formData.longitude = parseFloat(gservice.clickLong).toFixed(3);
+    longitude = $scope.formData.longitude;
+    console.log("formData from controller onClick", $scope.formData);
   });
+  //});
 
-  // Get coordinates based on mouse click
-  $rootScope.$on("clicked", function() {
-
-    // Run the gservice functions associated with identifying coordinates
-    $scope.$apply(function() {
-      $scope.formData.latitude = parseFloat(gservice.clickLat).toFixed(3);
-      latitude = $scope.formData.latitude;
-      $scope.formData.longitude = parseFloat(gservice.clickLong).toFixed(3);
-      longitude = $scope.formData.longitude;
-      console.log("formData from controller onClick", $scope.formData);
-    });
-  });
 
   // Updates the user document in MongoDB
   $scope.updateUserDetails = function() {
 
-      if(!$rootScope.authentication) {
-        window.alert("Please log in");
-      }
+    if(!$rootScope.authentication) {
+      window.alert("Please log in");
+    }
 
     var userData = {
       desiredLocation: $scope.formData.desiredLocation,
       location: [$scope.formData.longitude, $scope.formData.latitude],
-      htmlverified: $scope.formData.htmlverifed
+      //htmlverified: $scope.formData.htmlverifed
     };
 
     // Saves the user data to the db
-      console.log($scope.authentication.user.id);
-    $http.put('/users/' + $scope.authentication.users.id, userData).success(function(data) {
+    console.log($scope.authentication.user.id);
+    $http.put('/users/' + $scope.authentication.user.id, userData).success(function(data) {
 
-    // Once complete, clear the form (except location)
-    $scope.formData.desiredLocation = "";
-    gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
-  }).error(function(data) {
-    console.log('Error:' + data);
-  });
+      // Once complete, clear the form (except location)
+      $scope.formData.desiredLocation = "";
+      gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
+    }).error(function(data) {
+      console.log('Error:' + data);
+    });
   };
 }]);

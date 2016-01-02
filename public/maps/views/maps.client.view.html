@@ -9,6 +9,13 @@
     <div class="col-md-7">
       <div id="map" style="width:645px; height:645px"></div>
     </div>
+
+<div id="floating-panel">
+      <input id="address" type="textbox" value="Sydney, NSW">
+      <input id="submit" type="button" value="Geocode"
+      ng-click="geocodeAddress()">
+    </div>
+
     <!-- Side Panel -->
     <div class="col-md-5">
       <div class="panel panel-default">
@@ -44,7 +51,10 @@
       </div>
     </div>
   </div>
-  <hr/>
+   <form action="javascript:void(0)" id="form">
+        <input type="text" id="postcode" placeholder="Enter a postcode">
+        <input type="submit" value="Show me"/>
+      </form> <hr/>
   <!-- Footer -->
 
   <div class="footer">

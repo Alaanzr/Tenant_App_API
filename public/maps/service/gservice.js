@@ -25,6 +25,7 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
     $http.get('/users').success(function(response) {
       // Convert the results into Google Map format
       locations = convertToMapPoints(response);
+      test = postCodeToLong(response);
       console.log("respons", response);
 
       // Initialize the map
@@ -33,7 +34,13 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
   };
 
   // PRIVATE FUNCTIONS
-
+  //
+  var postCodeToLong = function(response){
+    for(var i=0; i < response.length; i++) {
+      var test = response[i];
+      console.log("newLoop", test.desiredLocation);
+  }
+};
 
   // Convert a JSON of users into map points
   var convertToMapPoints = function(response) {
@@ -45,6 +52,7 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
       console.log("Username: ", user.username);
       console.log("Desired Location: ", user.desiredLocation);
       console.log("Id: ", user.id);
+      console.log("postcode", user.desiredLocation);
 
       // Create popup windows for each record
       var contentString =
@@ -52,9 +60,6 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
       '<br><b>Desired Locations</b>: ' + user.desiredLocation +
       '</p>';
 
-      // console.log('****');
-      // console.log(user);
-      // console.log(user.location);
       console.log("Lat", user.location[0]);
       console.log("lon", user.location[1]);
       console.log("  ");
@@ -65,10 +70,14 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
           content: contentString,
           maxWidth: 320
         }),
-        username: user.username,
-        desiredLocations: user.desiredLocations
+        //username: user.username,
+        desiredLocations: user.desiredLocation
       });
     }
+    getLocation(user.desiredLocation, function(location){
+      console.log("ciao", locObj.lng(), locObj.lat());
+    });
+
     // location is now an array populated with records in Google Maps format
     return locations;
   };
