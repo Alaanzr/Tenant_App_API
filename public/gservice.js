@@ -46,7 +46,7 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
 
       // Create popup windows for each record
       var contentString =
-      '<p><b>Username</b>: ' + user.username +
+      '<p><b>Username</b>: <a href="/users/' + user.id + '">' + user.username + '</a>' +
       '<br><b>Desired Locations</b>: ' + user.desiredLocation +
       '</p>';
 
