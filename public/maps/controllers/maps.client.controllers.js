@@ -17,8 +17,7 @@ angular.module('maps').controller('MapsController', ['$scope', '$http', 'geoloca
     $scope.formData.longitude = parseFloat(coords.long).toFixed(3);
     $scope.formData.latitude = parseFloat(coords.lat).toFixed(3);
 
-    $scope.formData.htmlverified = "Location verified. Accurate geolocation coordinates provided";
-
+    console.log(coords);
     gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
   });
 
@@ -26,16 +25,14 @@ angular.module('maps').controller('MapsController', ['$scope', '$http', 'geoloca
   $rootScope.$on("clicked", function() {
 
     // Run the gservice functions associated with identifying coordinates
-    //$scope.$apply(function() {
+    $scope.$apply(function() {
       $scope.formData.latitude = parseFloat(gservice.clickLat).toFixed(3);
       latitude = $scope.formData.latitude;
-      console.log(latitude);
       $scope.formData.longitude = parseFloat(gservice.clickLong).toFixed(3);
       longitude = $scope.formData.longitude;
-      console.log(longitude);
-      //$scope.formData.htmlverified = "Nope (Thanks for spamming my map...)";
+      console.log("formData from controller onClick", $scope.formData);
     });
-  //});
+  });
 
   // Updates the user document in MongoDB
   $scope.updateUserDetails = function() {

@@ -7,9 +7,10 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
   // Array of locations obtained from API calls
   var locations = [];
 
-  // Selected Location (initialize to center of America)
-  var selectedLat = 39.50;
-  var selectedLong = -98.35;
+  // Selected Location (London)
+  var selectedLat = 51.500;
+  var selectedLong = -0.137;
+
   googleMapService.clickLat = 0;
   googleMapService.clickLong = 0;
 
@@ -24,13 +25,14 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
     $http.get('/users').success(function(response) {
       // Convert the results into Google Map format
       locations = convertToMapPoints(response);
+      console.log("respons", response);
 
       // Initialize the map
       initialize(latitude, longitude);
     }).error(function(){});
   };
 
-// PRIVATE FUNCTIONS
+  // PRIVATE FUNCTIONS
 
 
   // Convert a JSON of users into map points
@@ -40,9 +42,9 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
     // Loop through all of the JSON entries provided in the response
     for(var i=0; i < response.length; i++) {
       var user = response[i];
-      console.log(user.username);
-      console.log(user.desiredLocation);
-      console.log(user.id);
+      console.log("Username: ", user.username);
+      console.log("Desired Location: ", user.desiredLocation);
+      console.log("Id: ", user.id);
 
       // Create popup windows for each record
       var contentString =
@@ -53,10 +55,10 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
       // console.log('****');
       // console.log(user);
       // console.log(user.location);
-      // console.log(user.location[0]);
-      // console.log(user.location[1]);
+      console.log("Lat", user.location[0]);
+      console.log("lon", user.location[1]);
+      console.log("  ");
       // Converts each of the JSON records into Google Maps Location format [Lat, Lng]
-      console.log(user.properties);
       locations.push({
         latlon: new google.maps.LatLng(user.location[1], user.location[0]),
         message: new google.maps.InfoWindow({
@@ -75,68 +77,68 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
   var initialize = function(latitude, longitude) {
 
     // Uses the selected lat, long as starting point
-    var myLatLng = {lat: selectedLat, lng: selectedLong};
+  var myLatLng = {lat: selectedLat, lng: selectedLong};
 
-    if (!map) {
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 12,
-        center: myLatLng
-      });
-    }
-
-    // Loop through each location in the array and place a marker
-    locations.forEach(function(n, i) {
-      var marker = new google.maps.Marker({
-        position: n.latlon,
-        map: map,
-        title: "Big Map",
-        icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
-      });
-
-      // For each marker created, add a listener that checks for clicks
-      google.maps.event.addListener(marker, 'click', function(e) {
-        currentSelectedMarker = n;
-        console.log('hi');
-        n.message.open(map, marker);
-      });
+  if (!map) {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: myLatLng
     });
+  }
 
-    // Set initial location as a bouncing red marker
-    var initialLocation = new google.maps.LatLng(latitude, longitude);
+  // Loop through each location in the array and place a marker
+  locations.forEach(function(n, i) {
     var marker = new google.maps.Marker({
-      position: initialLocation,
-      animation: google.maps.Animation,
+      position: n.latlon,
       map: map,
-      icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
-    });
-    lastMarker = marker;
+      title: "Big Map",
+      icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+  });
 
-    // Function for moving to a selected Location
-    map.panTo(new google.maps.LatLng(latitude, longitude));
+  // For each marker created, add a listener that checks for clicks
+  google.maps.event.addListener(marker, 'click', function(e) {
+    currentSelectedMarker = n;
+    console.log('hi');
+    n.message.open(map, marker);
+  });
+});
 
-    // Clicking on the Map moves the bouncing red marker
-    google.maps.event.addListener(map, 'click', function(e) {
-      var marker = new google.maps.Marker({
-        position: e.latLng,
-        animation: google.maps.Animation,
-        map: map,
-        icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
-      });
+// Set initial location as a bouncing red marker
+var initialLocation = new google.maps.LatLng(latitude, longitude);
+var marker = new google.maps.Marker({
+  position: initialLocation,
+  animation: google.maps.Animation,
+  map: map,
+  icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+});
+lastMarker = marker;
 
-      // Delete the old red marker when a new spot is selected
-      if(lastMarker) {
-        lastMarker.setMap(null);
-      }
+// Function for moving to a selected Location
+map.panTo(new google.maps.LatLng(latitude, longitude));
 
-      // Create a new red marker and move to it
-      lastMarker = marker;
-      map.panTo(marker.position);
+// Clicking on the Map moves the bouncing red marker
+google.maps.event.addListener(map, 'click', function(e) {
+  var marker = new google.maps.Marker({
+    position: e.latLng,
+    animation: google.maps.Animation,
+    map: map,
+    icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+  });
 
-      // Update broadcasted variable (lets the panel know to change their lat, long values)
-      googleMapService.clickLat = marker.getPosition().lat();
-      googleMapService.clickLong = marker.getPosition().lng();
-      $rootScope.$broadcast("clicked");
-    });
+  // Delete the old red marker when a new spot is selected
+  if(lastMarker) {
+    lastMarker.setMap(null);
+  }
+
+  // Create a new red marker and move to it
+  lastMarker = marker;
+  map.panTo(marker.position);
+
+  // Update broadcasted variable (lets the panel know to change their lat, long values)
+  googleMapService.clickLat = marker.getPosition().lat();
+  googleMapService.clickLong = marker.getPosition().lng();
+  $rootScope.$broadcast("clicked");
+});
   };
 
   // Refresh the page upon window load. Use the initial latitude and longitude
