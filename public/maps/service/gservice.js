@@ -56,7 +56,7 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
       // console.log(user.location[0]);
       // console.log(user.location[1]);
       // Converts each of the JSON records into Google Maps Location format [Lat, Lng]
-      console.log(user);
+      console.log(user.properties);
       locations.push({
         latlon: new google.maps.LatLng(user.location[1], user.location[0]),
         message: new google.maps.InfoWindow({
@@ -64,8 +64,6 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
           maxWidth: 320
         }),
         username: user.username,
-        gender: user.gender,
-        age: user.age,
         desiredLocations: user.desiredLocations
       });
     }
