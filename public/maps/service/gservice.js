@@ -79,7 +79,7 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
 
     if (!map) {
       var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 3,
+        zoom: 12,
         center: myLatLng
       });
     }
@@ -118,7 +118,7 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
     google.maps.event.addListener(map, 'click', function(e) {
       var marker = new google.maps.Marker({
         position: e.latLng,
-        animation: google.maps.Animation.BOUNCE,
+        animation: google.maps.Animation,
         map: map,
         icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
       });

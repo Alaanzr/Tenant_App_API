@@ -7,8 +7,8 @@ angular.module('maps').controller('MapsController', ['$scope', '$http', 'geoloca
   var long = 0;
 
   // Set initial coordinates to the center of the US
-  $scope.formData.latitude = 39.500;
-  $scope.formData.longitude = -98.350;
+  $scope.formData.latitude = 51.500;
+  $scope.formData.longitude = -0.138;
 
   // Get user's actual coordinates based on HTML5 at window load
   geolocation.getLocation().then(function(data) {
@@ -26,12 +26,16 @@ angular.module('maps').controller('MapsController', ['$scope', '$http', 'geoloca
   $rootScope.$on("clicked", function() {
 
     // Run the gservice functions associated with identifying coordinates
-    $scope.$apply(function() {
+    //$scope.$apply(function() {
       $scope.formData.latitude = parseFloat(gservice.clickLat).toFixed(3);
+      latitude = $scope.formData.latitude;
+      console.log(latitude);
       $scope.formData.longitude = parseFloat(gservice.clickLong).toFixed(3);
+      longitude = $scope.formData.longitude;
+      console.log(longitude);
       //$scope.formData.htmlverified = "Nope (Thanks for spamming my map...)";
     });
-  });
+  //});
 
   // Updates the user document in MongoDB
   $scope.updateUserDetails = function() {
