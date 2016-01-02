@@ -25,7 +25,6 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
     $http.get('/users').success(function(response) {
       // Convert the results into Google Map format
       locations = convertToMapPoints(response);
-      test = postCodeToLong(response);
       console.log("respons", response);
 
       // Initialize the map
@@ -35,12 +34,15 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
 
   // PRIVATE FUNCTIONS
   //
-  var postCodeToLong = function(response){
-    for(var i=0; i < response.length; i++) {
-      var test = response[i];
-      console.log("newLoop", test.desiredLocation);
-  }
-};
+  //var postCodeToLong = function(response){
+    //for(var i=0; i < response.length; i++) {
+      //var test = response[i];
+      //var locations = [];
+      ////console.log("locations", locations, test.username);
+      ////console.log("newLoop", test.desiredLocation);
+  //}
+  //console.log("loc", locations);
+//};
 
   // Convert a JSON of users into map points
   var convertToMapPoints = function(response) {
@@ -74,11 +76,15 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
         desiredLocations: user.desiredLocation
       });
     }
-    getLocation(user.desiredLocation, function(location){
-      console.log("ciao", locObj.lng(), locObj.lat());
-    });
+    //getLocation(user.desiredLocation, function(location){
+    //});
 
     // location is now an array populated with records in Google Maps format
+    //console.log("testLocation", locations);
+
+
+    getLocation(locations, function(location){
+    });
     return locations;
   };
 
