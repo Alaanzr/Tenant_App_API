@@ -17,6 +17,7 @@ angular.module('maps').controller('MapsController', ['$scope', '$http', 'geoloca
     $scope.formData.longitude = parseFloat(coords.long).toFixed(3);
     $scope.formData.latitude = parseFloat(coords.lat).toFixed(3);
 
+        $scope.formData.htmlverified = "Yep (Thanks for giving us real data!)";
     console.log(coords);
     gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
   });
@@ -48,7 +49,8 @@ angular.module('maps').controller('MapsController', ['$scope', '$http', 'geoloca
     };
 
     // Saves the user data to the db
-    $http.put('/users/' + $scope.authentication.user.id, userData).success(function(data) {
+      console.log($scope.authentication.user.id);
+    $http.put('/users/' + $scope.authentication.users.id, userData).success(function(data) {
 
     // Once complete, clear the form (except location)
     $scope.formData.desiredLocation = "";
