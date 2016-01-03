@@ -1,4 +1,4 @@
-angular.module('maps').controller('MapsController', ['$scope', '$http', 'geolocation', 'Authentication', 'gservice', '$rootScope', function($scope, $http, geolocation, Authentication, gservice, $rootScope) {
+angular.module('maps').controller('MapsController', ['$scope', '$http', 'geolocation', 'Authentication', 'gservice', '$rootScope', 'postcodeConv', function($scope, $http, geolocation, Authentication, gservice, $rootScope, postcodeConv) {
   $scope.authentication = Authentication;
   // Initializes Variables
   $scope.formData = {};
@@ -38,12 +38,16 @@ $rootScope.$on("clicked", function() {
   // Updates the user document in MongoDB
   $scope.updateUserDetails = function() {
 
-    if(!$rootScope.authentication) {
+    if(!$scope.authentication.user) {
       window.alert("Please log in");
     }
 
+    postcodeConv.getLocation($scope.authentication.user);
+    console.log("mushroom");
+    console.log(postcodeConv.desiredLocationPoints);
+
     var userData = {
-      desiredLocation: $scope.formData.desiredLocation,
+      desiredLocation: postcodeConv.desiredLocationPoints,
       location: [$scope.formData.longitude, $scope.formData.latitude],
       //htmlverified: $scope.formData.htmlverifed
     };

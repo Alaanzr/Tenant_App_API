@@ -64,8 +64,8 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
         desiredLocations: user.desiredLocation
       });
     }
-   getLocation(locations, function(location){
-    });
+  //  getLocation(locations, function(location){
+  //   });
     return locations;
   };
 
