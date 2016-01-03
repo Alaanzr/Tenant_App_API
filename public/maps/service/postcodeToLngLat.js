@@ -1,14 +1,5 @@
 geocoder = new google.maps.Geocoder();
 
-//var converterPostcodeLongitude = function(locations) {
-
-  //for(var i=0; i < locations.length; i++) {
-    //var user = locations[i];
-    //console.log( user.desiredLocations);
-
-  //}
-//};
-
 var getLocation = function ( locations, callback ) {
   var locObj;
 

@@ -9,13 +9,6 @@
     <div class="col-md-7">
       <div id="map" style="width:645px; height:645px"></div>
     </div>
-
-<div id="floating-panel">
-      <input id="address" type="textbox" value="Sydney, NSW">
-      <input id="submit" type="button" value="Geocode"
-      ng-click="geocodeAddress()">
-    </div>
-
     <!-- Side Panel -->
     <div class="col-md-5">
       <div class="panel panel-default">
@@ -32,31 +25,16 @@
               <label for="language">Desired Location</label>
               <input type="text" class="form-control" id="desired_location" placeholder="Insert postcode" ng-model="formData.desiredLocation" >
             </div>
-            <!-- <div class="form-group">
-              <label for="latitude">Latitude</label>
-              <input type="text" class="form-control" id="latitude" value="39.500" ng-model="formData.latitude" readonly>
-              </div>
-              <div class="form-group">
-              <label for="longitude">Longitude</label>
-              <input type="text" class="form-control" id="longitude" value="-98.350" ng-model="formData.longitude" readonly>
-              </div> -->
               <div class="form-group">
                 <label for="verified">Auto Locate <span><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-refresh"></span></button></span></label>
                 <input type="text" class="form-control" id="verified" placeholder= "" ng-model="formData.htmlverified" readonly>
               </div>
-              <!-- Submit button. Note that its tied to createUser() function from addCtrl. Also note ng-disabled logic which prevents early submits.  -->
               <button type="submit" class="btn btn-danger btn-block" ng-disabled="addForm.$invalid" ng-click="updateUserDetails()">Submit</button>
           </form>
         </div>
       </div>
     </div>
   </div>
-   <form action="javascript:void(0)" id="form">
-        <input type="text" id="postcode" placeholder="Enter a postcode">
-        <input type="submit" value="Show me"/>
-      </form> <hr/>
-  <!-- Footer -->
-
   <div class="footer">
     <p class="text-center"><span class="glyphicon glyphicon-check"></span> Created by Alaan, Ez, Julien and Mattia -
     <a href="https://github.com/Alaanzr/Tenant_App_API">Github Repo</a></p>

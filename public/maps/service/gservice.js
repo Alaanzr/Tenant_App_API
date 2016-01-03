@@ -33,17 +33,6 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
   };
 
   // PRIVATE FUNCTIONS
-  //
-  //var postCodeToLong = function(response){
-    //for(var i=0; i < response.length; i++) {
-      //var test = response[i];
-      //var locations = [];
-      ////console.log("locations", locations, test.username);
-      ////console.log("newLoop", test.desiredLocation);
-  //}
-  //console.log("loc", locations);
-//};
-
   // Convert a JSON of users into map points
   var convertToMapPoints = function(response) {
     var locations = [];
@@ -76,14 +65,7 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
         desiredLocations: user.desiredLocation
       });
     }
-    //getLocation(user.desiredLocation, function(location){
-    //});
-
-    // location is now an array populated with records in Google Maps format
-    //console.log("testLocation", locations);
-
-
-    getLocation(locations, function(location){
+   getLocation(locations, function(location){
     });
     return locations;
   };
