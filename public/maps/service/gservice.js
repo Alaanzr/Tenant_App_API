@@ -43,7 +43,6 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
       console.log("Username: ", user.username);
       console.log("Desired Location: ", user.desiredLocation);
       console.log("Id: ", user.id);
-      console.log("postcode", user.desiredLocation);
 
       // Create popup windows for each record
       var contentString =
@@ -61,7 +60,7 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
           content: contentString,
           maxWidth: 320
         }),
-        //username: user.username,
+        username: user.username,
         desiredLocations: user.desiredLocation
       });
     }
