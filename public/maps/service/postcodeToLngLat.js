@@ -1,10 +1,10 @@
 geocoder = new google.maps.Geocoder();
 
-var getLocation = function ( address, callback ) {
+var getLocation = function ( locations, callback ) {
   var locObj;
 
-  //for(var i=0; i < locations.length; i++) {
-    //var address = locations[i].desiredLocations;
+  for(var i=0; i < locations.length; i++) {
+    var address = locations[i].desiredLocations;
 
   geocoder.geocode({ address: address}, function(results, status) {
     if (status === google.maps.GeocoderStatus.OK) {
@@ -17,8 +17,10 @@ var getLocation = function ( address, callback ) {
       alert('Geocode was not successful for the following reason: ' + status);
     }
     console.log( address.desiredLocations);
+    console.log('ciaoooooooooooooooooo');
     return locObj;
   });
+}
 };
 
 
