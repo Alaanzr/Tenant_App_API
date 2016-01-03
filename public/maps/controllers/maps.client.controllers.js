@@ -42,7 +42,7 @@ $rootScope.$on("clicked", function() {
       window.alert("Please log in");
     }
 
-    postcodeConv.getLocation($scope.authentication.user);
+    postcodeConv.getLocation($scope.authentication.user, $scope.formData.desiredLocation);
     console.log("mushroom");
     console.log(postcodeConv.desiredLocationPoints);
 

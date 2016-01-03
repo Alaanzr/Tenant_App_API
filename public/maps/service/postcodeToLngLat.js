@@ -1,12 +1,10 @@
 angular.module('postcodeConv', []).factory('postcodeConv', [function() {
 
 return {
-  getLocation: function (user) {
+  getLocation: function (user, address) {
     geocoder = new google.maps.Geocoder();
     var locObj;
     var that = this;
-
-    var address = user.desiredLocation;
 
     geocoder.geocode({ address: address}, function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
