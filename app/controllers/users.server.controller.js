@@ -105,13 +105,14 @@ exports.list = function(req, res, next) {
 };
 
 var indexOf_id = function(id, arrWithId) {
-    var test = -1;
-    arrWithId.forEach(function(item, index) {
-        if(id.toString() === item._id.toString()) {
-            test = index;
-        }
-    });
-    return test;
+    // var test = -1;
+    // arrWithId.forEach(function(item, index) {
+    //     if(id.toString() === item._id.toString()) {
+    //         test = index;
+    //     }
+    // });
+    // return test;
+    return arrWithId.indexOf(id)
 };
 
 exports.read = function(req, res) {
@@ -158,6 +159,8 @@ exports.user_request = function(req, res) {
 exports.user_connect = function(req, res) {
 
     var result = indexOf_id(req.user2._id ,req.user.requests_sent);
+
+
 
     req.user.requests_sent.splice( result, 1 );
 
