@@ -112,7 +112,7 @@ var indexOf_id = function(id, arrWithId) {
     //     }
     // });
     // return test;
-    return arrWithId.indexOf(id)
+    return arrWithId.indexOf(id);
 };
 
 exports.read = function(req, res) {
