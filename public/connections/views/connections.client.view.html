@@ -1,4 +1,4 @@
-<div ng-controller="UserController" ng-init=collectUserDetails()>
+<div ng-controller="ConnectionController" ng-init=collectUserDetails()>
 <h1> {{data.username}} </h1>
 <h5> Username: {{data.username}}</h5>
 <h5> Desired Location: {{data.desiredLocation}}</h5>
@@ -9,4 +9,11 @@
   <p> Outstanding Connection Requests: </p>
   <button type="button" name="button">Accept</button>
 </div>
+
+<div>
+<ul>
+  <li ng-repeat="connection in connections"> {{connection}} </li>
+</ul>
+</div>
+
 </div>

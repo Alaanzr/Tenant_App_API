@@ -1,5 +1,5 @@
 angular.module('connections').config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/connections/:user_id', {
+  $routeProvider.when('/connections', {
     templateUrl: '/connections/views/connections.client.view.html'
   });
 
