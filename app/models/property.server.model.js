@@ -35,6 +35,8 @@ var PropertySchema = new Schema ({
     ref: 'User'
   }
 
+
 });
 
 var Property = mongoose.model('Property', PropertySchema);
+

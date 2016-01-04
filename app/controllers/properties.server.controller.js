@@ -1,5 +1,5 @@
- var Property = require('mongoose').model('Property'),
- User = require('mongoose').model('User');
+ var Property = require('mongoose').model('Property'), User = require('mongoose').model('User');
+
 
  var getErrorMessage = function(err) {
    if (err.errors) {
@@ -33,22 +33,6 @@
      }
    });
  };
-
-
-
-
-
-  exports.create = function(req, res, next) {
-    var property = new Property(req.body);
-    property.save(function(err) {
-      if (err) {
-        return next(err);
-      }
-      else {
-        res.json(property);
-      }
-    });
-  };
 
   exports.list = function(req,res, next) {
     Property.find( {}, function(err, property) {

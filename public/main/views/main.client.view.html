@@ -1,0 +1,30 @@
+<section ng-controller="MainController">
+  <div ng-show="authentication.user">
+    <h3>Hello <span ng-bind="authentication.user.fullName"></span></h3>
+    <ul>
+      <li><a href="/#!/properties/create">Add Property</a></li>
+    </ul>
+
+    <div id="profile" class="list-group">
+      <h3> Profile </h3>
+      <div class="list-group-item">
+        <i class="fa fa-pencil fablack pull-right"></i>
+        <h5> Name: <span> {{authentication.user.fullName}} </span> <h5>
+        <h5> Username: <span> {{authentication.user.username}} </span> </h5>
+        <h5> Looking for properties in: </h5>
+      </div>
+    </div>
+
+    <ul class="list-group" ng-show="authentication.user.properties.length > 0">
+          <h3> User Properties </h3>
+        <li class="list-group-item" ng-repeat="property in authentication.user.properties">
+          <h4> Property # {{$index + 1}} </h4>
+          <p> Post Code: {{property.post_code}} </p>
+          <p> Street Name: {{property.street_name}} </p>
+          <p> Property Type: {{property.property_type}} </p>
+          <p> Contract Start: {{property.contract_start}} </p>
+          <p> Contract End: {{property.contract_end}} </p>
+        </li>
+      </ul>
+  </div>
+</section>
