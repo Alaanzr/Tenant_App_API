@@ -153,6 +153,7 @@ exports.user_request = function(req, res) {
     });
 
     var result = [req.user,req.user2];
+    console.log('result:', result);
     res.json(result);
 };
 
