@@ -5,6 +5,7 @@ angular.module('users').controller('UserController', ['$scope', '$http', '$route
 
   var userRecv = $routeParams.user_id;
   var userSender = $scope.authentication.user.id;
+  var result;
 
   console.log('receiver, sender:', userRecv, userSender);
 
@@ -12,6 +13,8 @@ angular.module('users').controller('UserController', ['$scope', '$http', '$route
     $http.get('/users/' + userRecv).success(function(data) {
       $scope.data = data;
     });
+
+    result = $http.get('user_connection/' + userSender + '/' + userRecv);
   };
 
   $scope.sendConnection = function() {
@@ -21,7 +24,9 @@ angular.module('users').controller('UserController', ['$scope', '$http', '$route
     });
   };
 
-  $scope.outstandingConnections = function() {
-
-  };
+  // $scope.outstandingConnections = function() {
+  //   if (result != -1) {
+  //     return true;
+  //   }
+  // };
 }]);
