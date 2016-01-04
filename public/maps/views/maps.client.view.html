@@ -26,7 +26,7 @@
               <input type="text" class="form-control" id="desired_location" placeholder="Insert postcode" ng-model="formData.desiredLocation" >
             </div>
               <div class="form-group">
-                <label for="verified">Auto Locate <span><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-refresh"></span></button></span></label>
+                <label for="verified">Auto Locate <span><button class="btn btn-default btn-xs" ng-click="autolocate()"><span class="glyphicon glyphicon-refresh"></span></button></span></label>
                 <!--<input type="text" class="form-control" id="verified" placeholder= "" ng-model="formData.htmlverified" readonly>-->
               </div>
               <button type="submit" class="btn btn-danger btn-block"

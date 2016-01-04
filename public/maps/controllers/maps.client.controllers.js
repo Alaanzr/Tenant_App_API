@@ -22,17 +22,24 @@ angular.module('maps').controller('MapsController', ['$scope', '$http', 'geoloca
 });
 
 // Get coordinates based on mouse click
-$rootScope.$on("clicked", function() {
-
-  // Run the gservice functions associated with identifying coordinates
-  //$scope.$apply(function() {
-    $scope.formData.latitude = parseFloat(gservice.clickLat).toFixed(3);
-    latitude = $scope.formData.latitude;
-    $scope.formData.longitude = parseFloat(gservice.clickLong).toFixed(3);
-    longitude = $scope.formData.longitude;
-    console.log("formData from controller onClick", $scope.formData);
-  });
+// $rootScope.$on("clicked", function() {
+//
+//   // Run the gservice functions associated with identifying coordinates
+//   //$scope.$apply(function() {
+//     $scope.formData.latitude = parseFloat(gservice.clickLat).toFixed(3);
+//     latitude = $scope.formData.latitude;
+//     $scope.formData.longitude = parseFloat(gservice.clickLong).toFixed(3);
+//     longitude = $scope.formData.longitude;
+//     console.log("formData from controller onClick", $scope.formData);
+//   });
   //});
+
+  $scope.autolocate = function() {
+    console.log(coords);
+    console.log(latitude);
+    console.log(longitude);
+    gservice.refresh(latitude, longitude);
+  };
 
 
   // Updates the user document in MongoDB

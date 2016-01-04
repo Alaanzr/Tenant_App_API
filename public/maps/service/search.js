@@ -1,5 +1,5 @@
 // Creates the gservice factory - our primary means to interact with Google Maps
-angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', function($http, $rootScope) {
+angular.module('search', []).factory('search', ['$http', '$rootScope', function($http, $rootScope) {
 
   // The service our factory will return
   var googleMapService = {};
@@ -47,7 +47,7 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
       // Create popup windows for each record
       var contentString =
       '<p><b>Username</b>: <a href="/#!/users/' + user.id + '">' + user.username + '</a>' +
-      '<br><b>Desired Locations</b>: ' +
+      '<br><b>Desired Locations</b>: ' + user.desiredLocation +
       '</p>';
 
       console.log("Lat", user.location[0]);
@@ -55,7 +55,7 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
       console.log("  ");
       // Converts each of the JSON records into Google Maps Location format [Lat, Lng]
       locations.push({
-        latlon: new google.maps.LatLng(user.desiredLocation[0], user.desiredLocation[1]),
+        latlon: new google.maps.LatLng(user.desired_location[1], user.desired_location[0]),
         message: new google.maps.InfoWindow({
           content: contentString,
           maxWidth: 320
