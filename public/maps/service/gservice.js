@@ -80,6 +80,7 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
       zoom: 12,
       center: myLatLng
     });
+    var autocomplete = new google.maps.places.Autocomplete(document.getElementById('desired_location'));
   }
 
   // Loop through each location in the array and place a marker
