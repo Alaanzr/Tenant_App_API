@@ -42,25 +42,24 @@ $rootScope.$on("clicked", function() {
       window.alert("Please log in");
     }
 
-    postcodeConv.getLocation($scope.authentication.user, $scope.formData.desiredLocation);
-    console.log("mushroom");
-    console.log(postcodeConv.desiredLocationPoints);
+    postcodeConv.getLocation($scope.authentication.user, $scope.formData.desiredLocation, function() {
+      console.log('GEOCODER SUCCESS');
+      var userData = {
+        desiredLocation: postcodeConv.desiredLocationPoints,
+        location: [$scope.formData.longitude, $scope.formData.latitude],
+      };
 
-    var userData = {
-      desiredLocation: postcodeConv.desiredLocationPoints,
-      location: [$scope.formData.longitude, $scope.formData.latitude],
-      //htmlverified: $scope.formData.htmlverifed
-    };
+      // Saves the user data to the db
+      $http.put('/users/' + $scope.authentication.user.id, userData).success(function(data) {
 
-    // Saves the user data to the db
-    console.log($scope.authentication.user.id);
-    $http.put('/users/' + $scope.authentication.user.id, userData).success(function(data) {
-
-      // Once complete, clear the form (except location)
-      $scope.formData.desiredLocation = "";
-      gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
-    }).error(function(data) {
-      console.log('Error:' + data);
+        // Once complete, clear the form (except location)
+        $scope.formData.desiredLocation = "";
+        gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
+        console.log('UPLOAD SUCCESS');
+      }).error(function(data) {
+        console.log('Error:' + data);
+      });
     });
-  };
+
+    };
 }]);

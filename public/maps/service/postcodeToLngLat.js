@@ -1,7 +1,7 @@
 angular.module('postcodeConv', []).factory('postcodeConv', [function() {
 
 return {
-  getLocation: function (user, address) {
+  getLocation: function (user, address, callback) {
     geocoder = new google.maps.Geocoder();
     var locObj;
     var that = this;
@@ -13,11 +13,11 @@ return {
         long = locObj.lng();
         console.log(user.username, lat, long);
         that.desiredLocationPoints = [lat, long];
+        callback();
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
       }
     });
-    return that.desiredLocationPoints;
   }
 };
 
