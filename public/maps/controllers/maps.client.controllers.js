@@ -7,8 +7,8 @@ angular.module('maps').controller('MapsController', ['$scope', '$http', 'geoloca
   var long = 0;
 
   // Set initial coordinates to the center of the US
-  $scope.formData.latitude = 51.500;
-  $scope.formData.longitude = -0.138;
+  latitude = 51.500;
+  longitude = -0.138;
 
   // Get user's actual coordinates based on HTML5 at window load
   geolocation.getLocation().then(function(data) {
@@ -18,7 +18,7 @@ angular.module('maps').controller('MapsController', ['$scope', '$http', 'geoloca
   $scope.formData.latitude = parseFloat(coords.lat).toFixed(3);
 
   console.log(coords);
-  gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
+  //gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
 });
 
 // Get coordinates based on mouse click
@@ -54,7 +54,8 @@ $rootScope.$on("clicked", function() {
 
         // Once complete, clear the form (except location)
         $scope.formData.desiredLocation = "";
-        gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
+        gservice.refresh(data.desiredLocation[0], data.desiredLocation[1]);
+        console.log(data);
         console.log('UPLOAD SUCCESS');
       }).error(function(data) {
         console.log('Error:' + data);
