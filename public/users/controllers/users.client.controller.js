@@ -15,7 +15,13 @@ angular.module('users').controller('UserController', ['$scope', '$http', '$route
   };
 
   $scope.sendConnection = function() {
-    $http.post('user_connection/' + userSender + '/' + userRecv);
-    console.log('connection added');
+    $http.post('user_connection/' + userSender + '/' + userRecv).success(function(data) {
+      console.log(data);
+      console.log('connection added');
+    });
+  };
+
+  $scope.outstandingConnections = function() {
+
   };
 }]);

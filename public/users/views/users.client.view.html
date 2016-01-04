@@ -4,4 +4,9 @@
 <h5> Desired Location: {{data.desiredLocation}}</h5>
 {{ data }}
 <button type="button" ng-click="sendConnection()">Send a connection</button>
+
+<div ng-show="outstandingConnections()">
+  <p> Outstanding Connection Requests: </p>
+  <button type="button" name="button">Accept</button>
+</div>
 </div>
