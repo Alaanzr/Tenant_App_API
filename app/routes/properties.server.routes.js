@@ -1,4 +1,4 @@
-
+var properties = require('../../app/controllers/properties.server.controller'), users = require('../../app/controllers/users.server.controller');
 
 module.exports = function(app) {
 
