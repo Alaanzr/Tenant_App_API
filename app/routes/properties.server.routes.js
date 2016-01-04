@@ -6,7 +6,7 @@ module.exports = function(app) {
 
     app.route('/user_properties/:user_id').post(properties.createUserProperty);
 
-    // app.route('/properties').post(properties.create).get(properties.list);
+    app.route('/properties_only').post(properties.create).get(properties.list);
 
     app.route('/properties/:property_id').get(properties.read).put(properties.update).delete(properties.delete);
 

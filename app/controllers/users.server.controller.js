@@ -123,6 +123,11 @@ exports.property_read = function(req, res) {
     res.json(req.user.properties);
 };
 
+
+exports.connect_read = function(req, res) {
+    res.json(req.user.connections);
+};
+
 exports.user_check = function(req, res) {
     var result = indexOf_id(req.user2._id, req.user.connections);
     res.json(result);
