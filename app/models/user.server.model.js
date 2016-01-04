@@ -10,7 +10,7 @@ var UserSchema = new Schema({
 
     lastName: String,
 
-    desiredLocation: String,
+    desiredLocation: [Number],
 
     location: {
       type: [Number], // [Long, Lat]
