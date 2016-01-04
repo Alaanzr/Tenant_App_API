@@ -1,4 +1,42 @@
- var Property = require('mongoose').model('Property');
+ var Property = require('mongoose').model('Property'),
+ User = require('mongoose').model('User');
+
+ var getErrorMessage = function(err) {
+   if (err.errors) {
+     for (var errName in err.errors) {
+       if (err.errors[errName].message)
+       return err.errors[errName].message;
+       }
+     } else {
+       return 'Unknown server error';
+     }
+ };
+
+ exports.createUserProperty = function(req, res) {
+   var property = new Property(req.body);
+   property.creator = req.user;
+
+   property.save(function(err) {
+     if (err) {
+       return res.status(400).send({
+         message: getErrorMessage(err)
+       });
+     } else {
+       res.json(property);
+       User.findByIdAndUpdate(req.user._id, { $push: {"properties": property.id} }, {safe: true, upsert: true, new: true }, function(err, user) {
+         if (err) {
+           console.log(err);
+         } else {
+           console.log(user);
+         }
+       });
+     }
+   });
+ };
+
+
+
+
 
   exports.create = function(req, res, next) {
     var property = new Property(req.body);
