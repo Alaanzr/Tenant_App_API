@@ -3,11 +3,18 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 var autopopulate = require("mongoose-autopopulate");
 
+
 var UserSchema = new Schema({
 
     firstName: String,
 
     lastName: String,
+
+    desiredLocation: String,
+
+    location: {
+      type: [Number], // [Long, Lat]
+    },
 
     email: {
               type: String,
@@ -42,11 +49,17 @@ var UserSchema = new Schema({
 
     properties: [{ type: Schema.Types.ObjectId, ref: 'Property', autopopulate: true }],
 
-    connections: [{ type: Schema.Types.ObjectId, ref: 'User', autopopulate: {select: '-connections -requests_sent -requests_recd -password -salt'} }],
+    connections: [{ type: Schema.Types.ObjectId, ref: 'User'}],
 
-    requests_sent: [{ type: Schema.Types.ObjectId, ref: 'User', autopopulate: {select: '-connections -requests_sent -requests_recd -password -salt'} }],
+    // , autopopulate: {select: '-connections -requests_sent -requests_recd -password -salt'}
 
-    requests_recd: [{ type: Schema.Types.ObjectId, ref: 'User', autopopulate: {select: '-connections -requests_sent -requests_recd -password -salt'} }],
+    requests_sent: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+
+    // , autopopulate: {select: '-connections -requests_sent -requests_recd -password -salt'}
+
+    requests_recd: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+
+    // , autopopulate: {select: '-connections -requests_sent -requests_recd -password -salt'}
 
     currentArea: String,
 
@@ -111,5 +124,6 @@ var UserSchema = new Schema({
   });
 
 UserSchema.plugin(autopopulate);
+
 
 var User = mongoose.model('User', UserSchema);
