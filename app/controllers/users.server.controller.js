@@ -105,14 +105,14 @@ exports.list = function(req, res, next) {
 };
 
 var indexOf_id = function(id, arrWithId) {
-    // var test = -1;
-    // arrWithId.forEach(function(item, index) {
-    //     if(id.toString() === item._id.toString()) {
-    //         test = index;
-    //     }
-    // });
-    // return test;
-    return arrWithId.indexOf(id);
+    var test = -1;
+    arrWithId.forEach(function(item, index) {
+        if(id.toString() === item._id.toString()) {
+            test = index;
+        }
+    });
+    return test;
+    // return arrWithId.indexOf(id);
 };
 
 exports.read = function(req, res) {
