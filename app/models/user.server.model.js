@@ -3,14 +3,16 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 var autopopulate = require("mongoose-autopopulate");
 
+
 var UserSchema = new Schema({
     firstName: String,
     lastName: String,
     desiredLocation: [Number],
+
     location: {
       type: [Number], // [Long, Lat]
     },
-    htmlverified: String,
+
     email: {
               type: String,
               match: [/.+\@.+\..+/,
@@ -37,9 +39,18 @@ var UserSchema = new Schema({
     created: {type: Date, default: Date.now},
     profile_picture: String,
     properties: [{ type: Schema.Types.ObjectId, ref: 'Property', autopopulate: true }],
-    connections: [{ type: Schema.Types.ObjectId, ref: 'User', autopopulate: {select: '-connections -requests_sent -requests_recd -password -salt'} }],
-    requests_sent: [{ type: Schema.Types.ObjectId, ref: 'User', autopopulate: {select: '-connections -requests_sent -requests_recd -password -salt'} }],
-    requests_recd: [{ type: Schema.Types.ObjectId, ref: 'User', autopopulate: {select: '-connections -requests_sent -requests_recd -password -salt'} }],
+    connections: [{ type: Schema.Types.ObjectId, ref: 'User'}],
+
+    // , autopopulate: {select: '-connections -requests_sent -requests_recd -password -salt'}
+
+    requests_sent: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+
+    // , autopopulate: {select: '-connections -requests_sent -requests_recd -password -salt'}
+
+    requests_recd: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+
+    // , autopopulate: {select: '-connections -requests_sent -requests_recd -password -salt'}
+
     currentArea: String,
     currentRentBand: Number,
     currentNoticePeriodDays: Number
