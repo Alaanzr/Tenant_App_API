@@ -11,17 +11,17 @@ angular.module('connections').controller('ConnectionController', ['$scope', '$ht
   // var userRecv = $routeParams.user_id;
   var userRecv = $scope.authentication.user.id;
   $scope.requestees = [];
-  console.log($scope.connections);
   // console.log('receiver, sender:', userRecv, userSender);
 
   $scope.collectUserDetails = function() {
     $http.get('/users/' + userRecv).success(function(data) {
       $scope.requests_recd = data.requests_recd;
+      console.log('request_received', $scope.requests_recd);
       $scope.requests_recd.forEach(function(user) {
         $http.get('/users/' + user.id).success(function(user) {
           console.log(user);
           $scope.requestees.push(user);
-          console.log($scope.requestees);
+          console.log('requestees:', $scope.requestees);
         });
       });
       $scope.data = data;
@@ -30,10 +30,10 @@ angular.module('connections').controller('ConnectionController', ['$scope', '$ht
     // result = $http.get('user_connection/' + userSender + '/' + userRecv);
   };
 
-  $scope.acceptConnection = function() {
-    $http.put('user_connection/' + user2 + '/' + userRecv).success(function(name){
-      console.log(name);
-      console.log($scope.connections);
+  $scope.acceptConnection = function(index) {
+    $http.put('user_connection/' + $scope.requests_recd[index].id + '/' + userRecv).success(function(name){
+      console.log('name:', name);
+      console.log('end of the accept', $scope.requests_recd[index].id);
     });
     console.log('hello accept');
   };
