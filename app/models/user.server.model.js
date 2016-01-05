@@ -39,15 +39,15 @@ var UserSchema = new Schema({
     created: {type: Date, default: Date.now},
     profile_picture: String,
     properties: [{ type: Schema.Types.ObjectId, ref: 'Property', autopopulate: true }],
-    connections: [{ type: Schema.Types.ObjectId, ref: 'User'}],
+    connections: [{ type: Schema.Types.ObjectId, ref: 'User', autopopulate: {select: '-connections -requests_sent -requests_recd -password -salt'} }],
 
     // , autopopulate: {select: '-connections -requests_sent -requests_recd -password -salt'}
 
-    requests_sent: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+    requests_sent: [{ type: Schema.Types.ObjectId, ref: 'User', autopopulate: {select: '-connections -requests_sent -requests_recd -password -salt'} }],
 
     // , autopopulate: {select: '-connections -requests_sent -requests_recd -password -salt'}
 
-    requests_recd: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+    requests_recd: [{ type: Schema.Types.ObjectId, ref: 'User' , autopopulate: {select: '-connections -requests_sent -requests_recd -password -salt'} }],
 
     // , autopopulate: {select: '-connections -requests_sent -requests_recd -password -salt'}
 

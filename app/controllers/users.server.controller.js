@@ -105,14 +105,14 @@ exports.list = function(req, res, next) {
 };
 
 var indexOf_id = function(id, arrWithId) {
-    // var test = -1;
-    // arrWithId.forEach(function(item, index) {
-    //     if(id.toString() === item._id.toString()) {
-    //         test = index;
-    //     }
-    // });
-    // return test;
-    return arrWithId.indexOf(id);
+    var test = -1;
+    arrWithId.forEach(function(item, index) {
+        if(id.toString() === item._id.toString()) {
+            test = index;
+        }
+    });
+    return test;
+    // return arrWithId.indexOf(id);
 };
 
 exports.read = function(req, res) {
@@ -121,6 +121,11 @@ exports.read = function(req, res) {
 
 exports.property_read = function(req, res) {
     res.json(req.user.properties);
+};
+
+
+exports.connect_read = function(req, res) {
+    res.json(req.user.connections);
 };
 
 exports.user_check = function(req, res) {

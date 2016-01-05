@@ -34,6 +34,12 @@ frisby.create('api call POST /user to add a user then read, update and delete it
       .expectStatus(200)
       .toss();
 
+    frisby.create('GET user CONNECTIONS array')
+      .get(URL + 'user_con_list/' + user.id)
+      .expectStatus(200)
+      .expectBodyContains('[{"_id":' + '"' + user.id.toString() + '"')
+      .toss();
+
     frisby.create('DELETE user')
       .delete(URL + 'users/' + user.id)
       .expectStatus(200)
