@@ -3,11 +3,6 @@ angular.module('connections').controller('ConnectionController', ['$scope', '$ht
 
   $scope.authentication = Authentication;
 
-  var user1 = '568b93173cb22afd0b43e1aa';
-  var user2 = '568ba5226a360dd003a8fa54';
-
-
-
   // var userRecv = $routeParams.user_id;
   var userRecv = $scope.authentication.user.id;
   $scope.requestees = [];

@@ -1,12 +1,26 @@
 <div ng-controller="UserController" ng-init=collectUserDetails()>
-<h1> {{data.username}} </h1>
+  <h1> {{data.username}} </h1>
+<div ng-show="connected">
+    <!-- User: {{authentication.user.connections}}
+    <br>
+    <br>
+    Data:{{data}}
+    <br>
+    <br>
+    {{authentication.user.connections.indexOf(data)}}
+
+    UserSenderID: {{authentication.user.connections}} -->
+
+
+<p> TEST </p>
 <h5> Username: {{data.username}}</h5>
 <!--<h5> Desired Location: {{data.desiredLocation}}</h5>-->
-{{ data }}
-<button type="button" ng-click="sendConnection()">Send a connection</button>
+</div>
+<button type="button" ng-click="sendConnection()" ng-hide="connected">Send a connection</button>
 
 <!--<div ng-show="outstandingConnections()">-->
   <!--<p> Outstanding Connection Requests: </p>-->
   <!--<button type="button" name="button">Accept</button>-->
 <!--</div>-->
+
 </div>
