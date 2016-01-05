@@ -4,14 +4,14 @@ angular.module('connections').controller('ConnectionController', ['$scope', '$ht
   $scope.authentication = Authentication;
 
   var user1 = '568b93173cb22afd0b43e1aa';
-  var user2 = '568b967c3cb22afd0b43e1ab';
+  var user2 = '568ba5226a360dd003a8fa54';
 
 
 
   // var userRecv = $routeParams.user_id;
   var userRecv = $scope.authentication.user.id;
   $scope.requestees = [];
-  $scope.connections = [];
+  console.log($scope.connections);
   // console.log('receiver, sender:', userRecv, userSender);
 
   $scope.collectUserDetails = function() {
@@ -33,6 +33,7 @@ angular.module('connections').controller('ConnectionController', ['$scope', '$ht
   $scope.acceptConnection = function() {
     $http.put('user_connection/' + user2 + '/' + userRecv).success(function(name){
       console.log(name);
+      console.log($scope.connections);
     });
     console.log('hello accept');
   };

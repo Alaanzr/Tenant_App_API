@@ -19,11 +19,18 @@ Outstanding Requests:
   </li>
 </ul>
 
-<ul ng-repeat="connection in connections track by $index">
+<p> Test request: </p>
+<button type="button" ng-click="acceptConnection()">
+  <li id='1'>ONE</li>
+</button>
+<ul ng-repeat="connection in authentication.user.connections track by $index">
+
   <li>
     <!--<a href="/#!/users/{{connection[$index].id }}"> {{ connection.username-->
       <!--}}</a>-->
-      {{ connection }}
+
+      {{ connection.username }}
+
   </li>
 </ul>
 </div>
