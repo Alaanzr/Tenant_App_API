@@ -1,20 +1,22 @@
 <div ng-controller="UserController" ng-init=collectUserDetails()>
+  <center>
   <h1> {{data.username}} </h1>
+  <img class="profile_image" src="{{data.image}}" />
+</center>
 <div ng-show="connected">
-    <!-- User: {{authentication.user.connections}}
-    <br>
-    <br>
-    Data:{{data}}
-    <br>
-    <br>
-    {{authentication.user.connections.indexOf(data)}}
 
-    UserSenderID: {{authentication.user.connections}} -->
+  <ul class="list-group" ng-show="authentication.user.properties.length > 0">
+        <h3> User Properties </h3>
+      <li class="list-group-item" ng-repeat="property in data.properties">
+        <h4> Property # {{$index + 1}} </h4>
+        <p> Post Code: {{property.post_code}} </p>
+        <p> Street Name: {{property.street_name}} </p>
+        <p> Property Type: {{property.property_type}} </p>
+        <p> Contract Start: {{property.contract_start}} </p>
+        <p> Contract End: {{property.contract_end}} </p>
+      </li>
+    </ul>
 
-
-<p> TEST </p>
-<h5> Username: {{data.username}}</h5>
-<!--<h5> Desired Location: {{data.desiredLocation}}</h5>-->
 </div>
 <button type="button" ng-click="sendConnection()" ng-hide="connected">Send a connection</button>
 
