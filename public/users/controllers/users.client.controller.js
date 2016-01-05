@@ -1,4 +1,4 @@
-angular.module('users').controller('connectionController', ['$scope', '$http', '$routeParams', 'Authentication', function($scope, $http, $routeParams, Authentication) {
+angular.module('users').controller('UserController', ['$scope', '$http', '$routeParams', 'Authentication', function($scope, $http, $routeParams, Authentication) {
 
     $scope.collectUserDetails = function() {
     $http.get('/users/' + $routeParams.user_id).success(function(data) {

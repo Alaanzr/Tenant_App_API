@@ -2,17 +2,19 @@
 <h1> {{data.username}} </h1>
 <h5> Username: {{data.username}}</h5>
 <h5> Desired Location: {{data.desiredLocation}}</h5>
-{{ data }}
-<button type="button" ng-click="sendConnection()">Send a connection</button>
 
-<div ng-show="outstandingConnections()">
+<!-- <div ng-show="outstandingConnections()">
   <p> Outstanding Connection Requests: </p>
   <button type="button" name="button">Accept</button>
-</div>
+</div> -->
 
+
+Outstanding Requests:
 <div>
-<ul>
-  <li ng-repeat="connection in connections"> {{connection}} </li>
+<ul ng-repeat="request in requests_recd track by $index">
+  {{request}}
+  <button type="button" name="button">Accept</button>
+  <button type="button" name="button">Reject</button>
 </ul>
 </div>
 
