@@ -178,20 +178,20 @@ frisby.create('api call POST "/user_connection/user_id1/user_id2" to REQUEST a c
 
 
 
-        // frisby.create('DELETE user1')
-        // .delete(URL + 'users/' + user1.id)
-        // .expectStatus(200)
-        // .toss();
+        frisby.create('DELETE user1')
+        .delete(URL + 'users/' + user1.id)
+        .expectStatus(200)
+        .toss();
 
-        // frisby.create('DELETE user2')
-        // .delete(URL + 'users/' + user2.id)
-        // .expectStatus(200)
-        // .toss();
+        frisby.create('DELETE user2')
+        .delete(URL + 'users/' + user2.id)
+        .expectStatus(200)
+        .toss();
 
-        // frisby.create('DELETE user3')
-        // .delete(URL + 'users/' + user3.id)
-        // .expectStatus(200)
-        // .toss();
+        frisby.create('DELETE user3')
+        .delete(URL + 'users/' + user3.id)
+        .expectStatus(200)
+        .toss();
 
       }).toss();
 
