@@ -49,9 +49,6 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
       '<img src="' + user.image + '" height="50px" width="50px"/>' + ' <a href="/#!/users/' + user.id + '">' + user.username + '</a>' +
       '<br>' + '</p>';
 
-      console.log("Lat", user.location[0]);
-      console.log("lon", user.location[1]);
-      console.log("  ");
       // Converts each of the JSON records into Google Maps Location format [Lat, Lng]
       locations.push({
         latlon: new google.maps.LatLng(user.desiredLocation[0], user.desiredLocation[1]),

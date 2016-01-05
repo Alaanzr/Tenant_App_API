@@ -54,7 +54,7 @@ angular.module('maps').controller('MapsController', ['$scope', '$http', 'geoloca
       var userData = {
         desiredLocation: postcodeConv.desiredLocationPoints,
         location: [$scope.formData.longitude, $scope.formData.latitude],
-      };
+      } ;
 
       // Saves the user data to the db
       $http.put('/users/' + $scope.authentication.user.id, userData).success(function(data) {
