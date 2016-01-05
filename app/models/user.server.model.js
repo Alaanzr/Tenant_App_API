@@ -8,6 +8,7 @@ var UserSchema = new Schema({
     firstName: String,
     lastName: String,
     desiredLocation: [Number],
+    image: String,
 
     location: {
       type: [Number], // [Long, Lat]
