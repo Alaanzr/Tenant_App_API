@@ -46,16 +46,14 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
 
       // Create popup windows for each record
       var contentString =
-      '<p><b>Username</b>: <a href="/#!/users/' + user.id + '">' + user.username + '</a>' +
-      '<br>' + '<img src="' + user.image + '" height="25px" width="25px"/>'+
-      '</p>';
+      '<img src="' + user.image + '" height="50px" width="50px"/>' + ' <a href="/#!/users/' + user.id + '">' + user.username + '</a>' +
+      '<br>' + '</p>';
 
       console.log("Lat", user.location[0]);
       console.log("lon", user.location[1]);
       console.log("  ");
       // Converts each of the JSON records into Google Maps Location format [Lat, Lng]
       locations.push({
-        user: user,
         latlon: new google.maps.LatLng(user.desiredLocation[0], user.desiredLocation[1]),
         message: new google.maps.InfoWindow({
           content: contentString,
@@ -86,16 +84,12 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
 
   // Loop through each location in the array and place a marker
   locations.forEach(function(n, i) {
-    var icon = {
-        url: n.user.image,
-        scaledSize: new google.maps.Size(30, 30)
-        };
 
     var marker = new google.maps.Marker({
       position: n.latlon,
       map: map,
       title: "Big Map",
-      icon: icon
+      icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
   });
 
   // For each marker created, add a listener that checks for clicks
