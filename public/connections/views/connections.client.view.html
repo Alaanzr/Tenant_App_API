@@ -12,7 +12,7 @@
 Outstanding Requests:
 <div>
 <ul ng-repeat="request in requests_recd track by $index">
-  {{request}}
+  <a href="/#!/users/{{requestees[$index].id}}"> {{requestees[$index].username}} </a>
   <button type="button" name="button">Accept</button>
   <button type="button" name="button">Reject</button>
 </ul>

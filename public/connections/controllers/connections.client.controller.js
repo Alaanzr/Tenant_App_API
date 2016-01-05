@@ -5,6 +5,7 @@ angular.module('connections').controller('ConnectionController', ['$scope', '$ht
 
   // var userRecv = $routeParams.user_id;
   var userSender = $scope.authentication.user.id;
+  $scope.requestees = [];
   var result;
 
   // console.log('receiver, sender:', userRecv, userSender);
@@ -12,6 +13,12 @@ angular.module('connections').controller('ConnectionController', ['$scope', '$ht
   $scope.collectUserDetails = function() {
     $http.get('/users/' + userSender).success(function(data) {
       $scope.requests_recd = data.requests_recd;
+      $scope.requests_recd.forEach(function(id) {
+        $http.get('/users/' + id).success(function(user) {
+          console.log(user);
+          $scope.requestees.push(user);
+        });
+      });
       $scope.data = data;
     });
 
