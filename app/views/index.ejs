@@ -18,7 +18,7 @@
             <div>
               <ul class="nav navbar-nav" ng-show="authentication.user">
                 <a href="#!/"><i class="fa fa-home faicon fa-2x"></i></a>
-                <a href="#!/connections"><i id="noti_Container" class="fa fa-user faicon fa-2x"><div class="noti_bubble" ng-show="authentication.user.requests_recd.length > 0">{{authentication.user.requests_recd.length}}</div></i></a>
+                <a href="#!/connections"><i id="noti_Container" class="fa fa-user faicon fa-2x"><div class="noti_bubble" ng-show="authentication.user.requests_recd.length > 0" ng-bind="authentication.user.requests_recd.length"></div></i></a>
                 <a href="#!/maps"><i class="fa fa-cogs faicon fa-2x"></i></a>
                 <a href="#/"><i class="fa fa-file faicon fa-2x"></i></a>
               </ul>
