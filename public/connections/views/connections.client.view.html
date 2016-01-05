@@ -1,5 +1,5 @@
 <div ng-controller="ConnectionController" ng-init=collectUserDetails()>
-<h1> {{data.username}} </h1>
+<h1> current user: {{data.username}} </h1>
 <h5> Username: {{data.username}}</h5>
 <h5> Desired Location: {{data.desiredLocation}}</h5>
 
@@ -12,9 +12,19 @@
 Outstanding Requests:
 <div>
 <ul ng-repeat="request in requests_recd track by $index">
-  <a href="/#!/users/{{requestees[$index].id}}"> {{requestees[$index].username}} </a>
-  <button type="button" name="button">Accept</button>
-  <button type="button" name="button">Reject</button>
+  <li>
+  <a href="/#!/users/{{requestees[$index].id}}"> sender request: {{requestees[$index].username}} </a>
+  <button type="button" name="button" ng-click="acceptConnection()">Accept</button>
+  <button type="button" name="button" ng-click="rejectConnection()">Reject</button>
+  </li>
+</ul>
+
+<ul ng-repeat="connection in connections track by $index">
+  <li>
+    <!--<a href="/#!/users/{{connection[$index].id }}"> {{ connection.username-->
+      <!--}}</a>-->
+      {{ connection }}
+  </li>
 </ul>
 </div>
 
