@@ -29,8 +29,8 @@
           <p> Post Code: {{property.post_code}} </p>
           <p> Street Name: {{property.street_name}} </p>
           <p> Property Type: {{property.property_type}} </p>
-          <p> Contract Start: {{property.contract_start}} </p>
-          <p> Contract End: {{property.contract_end}} </p>
+          <p> Contract Start: {{property.contract_start | date: "MM/dd/yyyy"}} </p>
+          <p> Contract End: {{property.contract_end | date: "MM/dd/yyyy"}} </p>
         </li>
       </ul>
   </div>
