@@ -181,13 +181,13 @@ exports.user_connect = function(req, res) {
         }
     });
 
-    var result2 = indexOf_id(req.user._id, req.user.requests_recd);
+    var result2 = indexOf_id(req.user._id, req.user2.requests_recd);
 
-    req.user.requests_recd.splice( result2, 1 );
+    req.user2.requests_recd.splice( result2, 1 );
 
     req.user2.connections.unshift(req.user._id);
 
-    User.findByIdAndUpdate(req.user2.id, { requests_recd: req.user.requests_recd, connections: req.user2.connections },{new: true}, function(err, user) {
+    User.findByIdAndUpdate(req.user2.id, { requests_recd: req.user2.requests_recd, connections: req.user2.connections },{new: true}, function(err, user) {
         if (err) {
             return next(err);
         }

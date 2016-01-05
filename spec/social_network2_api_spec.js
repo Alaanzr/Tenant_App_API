@@ -112,13 +112,13 @@ frisby.create('api call POST "/user_connection/user_id1/user_id2" to REQUEST a c
       frisby.create('READ  user1')
       .get(URL + 'users/' + user1.id)
       .expectStatus(200)
-      .expectBodyContains('"connections":[{"_id":"567851b0f9e7231015c5ec57"')
+      .expectBodyContains('"connections":[]')
       .toss();
 
       frisby.create('READ user2')
       .get(URL + 'users/' + user2.id)
       .expectStatus(200)
-      .expectBodyContains('"connections":[{"_id":"567851b0f9e7231015c5ec57"')
+      .expectBodyContains('"connections":[]')
       .toss();
 
 
