@@ -11,6 +11,7 @@ frisby.create('api call POST /user to add a user then read, update and delete it
       "provider": "local",
       "profile_picture": "mypingpongpicture2.jpg",
       "connections": [],
+      "requests_recd": ["568d0fe3c344f0f29bed191a"],
       "properties": ["56743f5004dabd110041f84e"]
     })
     .expectStatus(200)
@@ -39,6 +40,13 @@ frisby.create('api call POST /user to add a user then read, update and delete it
       .expectStatus(200)
       .expectBodyContains('[{"_id":' + '"' + user.id.toString() + '"')
       .toss();
+
+    frisby.create('GET user Request Recd array')
+      .get(URL + 'user_inv_list/' + user.id)
+      .expectStatus(200)
+      .expectBodyContains('[{"_id":' + '"568d0fe3c344f0f29bed191a"')
+      .toss();
+
 
     frisby.create('DELETE user')
       .delete(URL + 'users/' + user.id)

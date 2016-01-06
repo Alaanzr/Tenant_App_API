@@ -128,6 +128,12 @@ exports.connect_read = function(req, res) {
     res.json(req.user.connections);
 };
 
+
+exports.conrecd_read = function(req, res) {
+    res.json(req.user.requests_recd);
+};
+
+
 exports.user_check = function(req, res) {
     var result = indexOf_id(req.user2._id, req.user.connections);
     res.json(result);
