@@ -1,4 +1,4 @@
-angular.module('main').controller('MainController', ['$scope', 'Authentication', '$http', '$route', function($scope, Authentication, $http, $route) {
+angular.module('main').controller('MainController', ['$scope', 'Authentication', '$http', '$window', function($scope, Authentication, $http, $window) {
   $scope.authentication = Authentication;
 
   $scope.editStatus = false;
@@ -16,7 +16,7 @@ angular.module('main').controller('MainController', ['$scope', 'Authentication',
     $http.put('/users/' + $scope.authentication.user.id, userData).success(function(data) {
       $scope.editStatus = false;
     });
-    $route.reload();
+    $window.location.reload();
   };
 }]);
 
