@@ -13,6 +13,8 @@
  };
 
  exports.createUserProperty = function(req, res) {
+   console.log('***********');
+   console.log(req.user);
    var property = new Property(req.body);
    property.creator = req.user;
 

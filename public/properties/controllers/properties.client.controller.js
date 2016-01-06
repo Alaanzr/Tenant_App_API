@@ -13,7 +13,7 @@ angular.module('properties').controller('PropertyController', ['$scope', '$route
     property.$save(function(response) {
       // $scope.authentication.user.properties.push({post_code: response.post_code,
       // street_name: response.street_name});
-      $location.path('properties/' + response._id);
+      $location.path('#!/');
     }, function(errorResponse) {
       $scope.error = errorResponse.data.message;
     });
