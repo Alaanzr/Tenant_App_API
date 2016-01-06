@@ -5,8 +5,9 @@
         <%=title %>
     </title>
 
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
+
 </head>
 <body>
     <% for(var i in messages) { %>
@@ -28,9 +29,6 @@
 
             <label for="email" class="sr-only">E-mail</label>
             <input type="email" id="email" name="email" class="form-control" placeholder="E-mail" required>
-
-            <label for="image" class="sr-only">Image</label>
-            <input type="text" id="image" name="image" class="form-control" placeholder="Image URL" required>
 
             <label for="password" class="sr-only">Password</label>
             <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
