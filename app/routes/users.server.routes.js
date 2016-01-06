@@ -33,6 +33,8 @@ module.exports = function(app) {
 
     app.route('/user_con_list/:user_id').get(users.connect_read);
 
+    app.route('/user_inv_list/:user_id').get(users.conrecd_read);
+
     app.route('/user_connection/:user_id/:user_id2').post(users.user_request).get(users.user_check).put(users.user_connect).delete(users.user_disconnect);
 
     app.param('user_id', users.user_id);
