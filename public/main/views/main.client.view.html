@@ -15,14 +15,26 @@
     <div id="profile" class="list-group">
       <h3> Profile </h3>
       <div class="list-group-item">
-        <i class="fa fa-pencil fablack pull-right"></i>
+        <button ng-click="changeEditStatus()" class="pull-right"><i class="fa fa-pencil fablack pull-right"></i></button>
         <h5> Name: <span> {{authentication.user.fullName}} </span> <h5>
         <h5> Username: <span> {{authentication.user.username}} </span> </h5>
-        <h5> Looking for properties in: </h5>
+        <h5> Description: </h5>
       </div>
     </div>
 
-    <ul class="list-group" ng-show="authentication.user.properties.length > 0">
+    <br>
+
+    <div ng-show="editStatus" class="list-group">
+      <div class="list-group-item">
+        <h5> Description: </h5>
+        <input type="text" name="name" value=""><br>
+        <h5> Profile Image: </h5>
+        <input type="text" name="name" value="">
+        <button type="submit" name="button" ng-click="updateProfile()">Update Profile</button>
+      </div>
+    </div>
+
+    <ul class="list-group" ng-show="authentication.user.properties.length > 0" ng-hide="editStatus">
           <h3> User Properties </h3>
         <li class="list-group-item" ng-repeat="property in authentication.user.properties">
           <h4> Property # {{$index + 1}} </h4>
