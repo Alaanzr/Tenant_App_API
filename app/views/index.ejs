@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title><% title %></title>
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-<div ng-controller="MainController">
-  <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="/#!">Tenant App</a>
-        </div>
-
+  <head>
+    <title><% title %></title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <div ng-controller="MainController">
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="container-fluid">
             <div>
               <ul class="nav navbar-nav" ng-show="authentication.user">
+                <a class="navbar-brand" href="/#!">Tenant App</a>
                 <a href="#!/"><i class="fa fa-home faicon fa-2x"></i></a>
                 <a href="#!/connections"><i id="noti_Container" class="fa fa-users faicon fa-2x"><div class="noti_bubble" ng-show="authentication.user.requests_recd.length > 0" ng-bind="authentication.user.requests_recd.length"></div></i></a>
                 <a href="#!/maps"><i class="fa fa-search faicon fa-2x"></i></a>
@@ -31,60 +28,60 @@
               </ul>
             </div>
           </div>
+        </div>
+      </nav>
+
+      <div ng-show="!authentication.user" class="jumbotron">
+        <div class="container">
+          <h1> HouseMates </h1>
+        </div>
       </div>
-</nav>
+    </div>
 
-<div ng-show="!authentication.user" class="jumbotron">
-  <div class="container">
-    <h1> Tenant Finder </h1>
-  </div>
-</div>
-</div>
+    <section ng-view></section>
 
-  <section ng-view></section>
+    <script type="text/javascript">
+window.user = <%- user || 'null' %>
+    </script>
 
-  <script type="text/javascript">
-    window.user = <%- user || 'null' %>
-  </script>
-
-  <script type="text/javascript" src="/bower_components/angular/angular.js"></script>
-  <script type="text/javascript" src="/bower_components/angular-route/angular-route.js"></script>
-  <script type="text/javascript" src="/bower_components/angular-resource/angular-resource.js"></script>
-  <script type="text/javascript" src="/bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
-  <script
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSwtYvoRodTwA17nKsYaPd8MciKkBKBNo&libraries=places"></script>
-  <!--<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places" type="text/javascript"></script>-->
-  <script type="text/javascript" src="/bower_components/modernizr/bin/modernizr"></script>
-  <script type="text/javascript" src="/main/main.client.module.js"></script>
-  <script type="text/javascript" src="/main/controllers/main.client.controller.js"></script>
-  <script type="text/javascript" src="/main/config/main.client.routes.js"></script>
-  <script type="text/javascript" src="/users.client.module.js"></script>
-  <script type="text/javascript" src="/users/controllers/users.client.controller.js"></script>
-  <script type="text/javascript" src="/users/config/users.client.routes.js"></script>
-  <script type="text/javascript" src="/users/services/authentication.client.service.js"></script>
-  <script type="text/javascript" src="/properties.client.module.js"></script>
-  <script type="text/javascript" src="/properties/services/properties.client.services.js"></script>
-  <script type="text/javascript" src="/properties/config/properties.client.routes.js"></script>
-  <script type="text/javascript" src="/properties/controllers/properties.client.controller.js"></script>
-  <script type="text/javascript" src="/maps.client.module.js"></script>
-  <script type="text/javascript" src="/maps/config/maps.client.routes.js"></script>
-  <script type="text/javascript" src="/maps/service/gservice.js"></script>
-  <script type="text/javascript" src="/maps/controllers/maps.client.controllers.js"></script>
-  <script type="text/javascript" src="/maps/service/postcodeToLngLat.js"></script>
-  <script type="text/javascript" src="/connections.client.module.js"></script>
-  <script type="text/javascript" src="/connections/controllers/connections.client.controller.js"></script>
-  <script type="text/javascript" src="/connections/config/connections.client.routes.js"></script>
-  <script type="text/javascript" src="/application.js"></script>
-  <br><br>
-  <div class="footer">
-    <p class="text-center"><span class="glyphicon glyphicon-check"></span>
-    Created by <a href="https://github.com/Alaanzr"> Alaan</a>,<a
-                  href="https://github.com/ezzye"> Ez</a>,<a
-                  href="https://github.com/jbhdeconinck">Julien </a>and<a
-                  href="https://github.com/Mattia46"> Mattia</a> - 
-    <a href="https://github.com/Alaanzr/Tenant_App_API">Github Repo</a></p>
-  </div>
+    <script type="text/javascript" src="/bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="/bower_components/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="/bower_components/angular-resource/angular-resource.js"></script>
+    <script type="text/javascript" src="/bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
+    <script
+                                   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSwtYvoRodTwA17nKsYaPd8MciKkBKBNo&libraries=places"></script>
+    <!--<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places" type="text/javascript"></script>-->
+    <script type="text/javascript" src="/bower_components/modernizr/bin/modernizr"></script>
+    <script type="text/javascript" src="/main/main.client.module.js"></script>
+    <script type="text/javascript" src="/main/controllers/main.client.controller.js"></script>
+    <script type="text/javascript" src="/main/config/main.client.routes.js"></script>
+    <script type="text/javascript" src="/users.client.module.js"></script>
+    <script type="text/javascript" src="/users/controllers/users.client.controller.js"></script>
+    <script type="text/javascript" src="/users/config/users.client.routes.js"></script>
+    <script type="text/javascript" src="/users/services/authentication.client.service.js"></script>
+    <script type="text/javascript" src="/properties.client.module.js"></script>
+    <script type="text/javascript" src="/properties/services/properties.client.services.js"></script>
+    <script type="text/javascript" src="/properties/config/properties.client.routes.js"></script>
+    <script type="text/javascript" src="/properties/controllers/properties.client.controller.js"></script>
+    <script type="text/javascript" src="/maps.client.module.js"></script>
+    <script type="text/javascript" src="/maps/config/maps.client.routes.js"></script>
+    <script type="text/javascript" src="/maps/service/gservice.js"></script>
+    <script type="text/javascript" src="/maps/controllers/maps.client.controllers.js"></script>
+    <script type="text/javascript" src="/maps/service/postcodeToLngLat.js"></script>
+    <script type="text/javascript" src="/connections.client.module.js"></script>
+    <script type="text/javascript" src="/connections/controllers/connections.client.controller.js"></script>
+    <script type="text/javascript" src="/connections/config/connections.client.routes.js"></script>
+    <script type="text/javascript" src="/application.js"></script>
+    <br><br>
+    <div class="footer">
+      <p class="text-center"><span class="glyphicon glyphicon-check"></span>
+      Created by <a href="https://github.com/Alaanzr"> Alaan</a>,<a
+                    href="https://github.com/ezzye"> Ez</a>,<a
+                    href="https://github.com/jbhdeconinck">Julien </a>and<a
+                    href="https://github.com/Mattia46"> Mattia</a> - 
+                  <a href="https://github.com/Alaanzr/Tenant_App_API">Github Repo</a></p>
+    </div>
 
 
-</body>
+  </body>
 </html>
