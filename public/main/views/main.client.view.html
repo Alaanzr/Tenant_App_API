@@ -1,9 +1,9 @@
 <section ng-controller="MainController">
   <div ng-show="authentication.user">
 
-    <ul>
-      <li><a href="/#!/properties/create">Add Property</a></li>
-    </ul>
+    <!--<ul>-->
+      <!--<li><a href="/#!/properties/create">Add Property</a></li>-->
+    <!--</ul>-->
 
     <center>
       <h3>Hello <span ng-bind="authentication.user.fullName"></span></h3>
@@ -11,7 +11,7 @@
       <br>
       <a href="" ng-click="changeEditStatus()" ng-show="authentication.user.currentArea == ''"><img class="images" src="/images/House.png"/></a>
       <a href="" ng-click="changeContactStatus()" ng-show="authentication.user.email == ''"><img class="images" src="/images/Feather.png"/></a>
-      <a href="" ng-click="changePropertyStatus()" ng-show="authentication.user.properties.length === 0"><img class="images" src="/images/House.png"/></a>
+      <a href="/#!/properties/create" ng-click="changePropertyStatus()" ng-show="authentication.user.properties.length === 0"><img class="images" src="/images/House.png"/></a>
     </center>
 
 
@@ -55,6 +55,7 @@
 
     <ul class="list-group" ng-show="authentication.user.properties.length > 0">
           <h3> User Properties </h3>
+          <a href="/#!/properties/create">+</a>
         <li class="list-group-item" ng-repeat="property in authentication.user.properties">
           <h4> Property # {{$index + 1}} </h4>
           <p> Post Code: {{property.post_code}} </p>
