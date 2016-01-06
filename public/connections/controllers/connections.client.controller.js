@@ -1,4 +1,4 @@
-angular.module('connections').controller('ConnectionController', ['$scope', '$http', '$routeParams', 'Authentication', function($scope, $http, $routeParams, Authentication) {
+angular.module('connections').controller('ConnectionController', ['$scope', '$http', '$routeParams', 'Authentication', '$window', function($scope, $http, $routeParams, Authentication, $window) {
 
 
   $scope.authentication = Authentication;
@@ -29,6 +29,7 @@ angular.module('connections').controller('ConnectionController', ['$scope', '$ht
     $http.put('user_connection/' + $scope.requests_recd[index].id + '/' + userRecv).success(function(name){
       console.log('name:', name);
       console.log('end of the accept', $scope.requests_recd[index].id);
+      $window.location.reload();
     });
     console.log('hello accept');
   };
