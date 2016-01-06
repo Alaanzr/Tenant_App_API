@@ -107,3 +107,8 @@ h1, h4 {
 .test {
 	background-color: red;
 }
+
+.images {
+	height: 200px;
+	width: 200px;
+}

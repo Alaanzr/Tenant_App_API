@@ -5,6 +5,10 @@
       <li><a href="/#!/properties/create">Add Property</a></li>
     </ul>
 
+    <a href="" ng-click="changeEditStatus()"><img class="images" src="/images/House.png"/></a>
+
+    <a href="" ng-click="changeContactStatus()"><img class="images" src="/images/Feather.png"/></a>
+
 
     <center>
       <h3>Hello <span ng-bind="authentication.user.fullName"></span></h3>
@@ -12,7 +16,7 @@
     </center>
 
 
-    <div id="profile" class="list-group">
+    <div id="profile" class="list-group" ng-show="profileAvailable()">
       <h3> Profile </h3>
       <div class="list-group-item">
         <a href="" ng-click="changeEditStatus()" class="pull-right"><i class="fa fa-pencil fablack pull-right"></i></a>
@@ -34,7 +38,27 @@
       </div>
     </div>
 
-    <ul class="list-group" ng-show="authentication.user.properties.length > 0" ng-hide="editStatus">
+    <div class="list-group" ng-show="contactDetailsAvailable()">
+      <h3> Contact Details </h3>
+      <div class="list-group-item">
+        <a href="" ng-click="changeContactStatus()" class="pull-right"><i class="fa fa-pencil fablack pull-right"></i></a>
+        <!-- <h5> Name: <span> {{authentication.user.fullName}} </h5>
+        <h5> Username: {{authentication.user.username}} </h5> -->
+        <h5> Email: </h5> <span><p> {{authentication.user.email}}</p> </span>
+      </div>
+    </div>
+
+    <br>
+
+    <div ng-show="contactDetailsStatus" class="list-group">
+      <div class="list-group-item">
+        <h5> Email: </h5>
+        <input ng-model="email" type="email" name="email">
+        <button type="submit" name="button" ng-click="updateContactDetails()">Update Profile</button>
+      </div>
+    </div>
+
+    <ul class="list-group" ng-show="authentication.user.properties.length > 0">
           <h3> User Properties </h3>
         <li class="list-group-item" ng-repeat="property in authentication.user.properties">
           <h4> Property # {{$index + 1}} </h4>
