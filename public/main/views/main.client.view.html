@@ -5,14 +5,13 @@
       <li><a href="/#!/properties/create">Add Property</a></li>
     </ul>
 
-    <a href="" ng-click="changeEditStatus()"><img class="images" src="/images/House.png"/></a>
-
-    <a href="" ng-click="changeContactStatus()"><img class="images" src="/images/Feather.png"/></a>
-
-
     <center>
       <h3>Hello <span ng-bind="authentication.user.fullName"></span></h3>
       <img ng-src="{{authentication.user.image}}" class="profile_image" /img>
+      <br>
+      <a href="" ng-click="changeEditStatus()" ng-show="authentication.user.currentArea == ''"><img class="images" src="/images/House.png"/></a>
+      <a href="" ng-click="changeContactStatus()" ng-show="authentication.user.email == ''"><img class="images" src="/images/Feather.png"/></a>
+      <a href="" ng-click="changePropertyStatus()" ng-show="authentication.user.properties.length === 0"><img class="images" src="/images/House.png"/></a>
     </center>
 
 
@@ -20,8 +19,6 @@
       <h3> Profile </h3>
       <div class="list-group-item">
         <a href="" ng-click="changeEditStatus()" class="pull-right"><i class="fa fa-pencil fablack pull-right"></i></a>
-        <!-- <h5> Name: <span> {{authentication.user.fullName}} </h5>
-        <h5> Username: {{authentication.user.username}} </h5> -->
         <h5> Description: </h5> <span><p> {{authentication.user.currentArea}}</p> </span>
       </div>
     </div>
@@ -42,8 +39,6 @@
       <h3> Contact Details </h3>
       <div class="list-group-item">
         <a href="" ng-click="changeContactStatus()" class="pull-right"><i class="fa fa-pencil fablack pull-right"></i></a>
-        <!-- <h5> Name: <span> {{authentication.user.fullName}} </h5>
-        <h5> Username: {{authentication.user.username}} </h5> -->
         <h5> Email: </h5> <span><p> {{authentication.user.email}}</p> </span>
       </div>
     </div>
@@ -69,5 +64,25 @@
           <p> Contract End: {{property.contract_end}} </p>
         </li>
       </ul>
+
+      <!-- <div ng-show="editStatus" class="list-group">
+        <div class="list-group-item">
+          <h5> Description: </h5>
+          <textarea ng-model="description" name="description" id="description" rows="5" cols="126"></textarea>
+          <h5> Profile Image: </h5>
+          <input ng-model="image" type="text" name="name" value="">
+          <button type="submit" name="button" ng-click="updateProfile()">Update Profile</button>
+        </div>
+      </div>
+
+      <div class="list-group" ng-show="contactDetailsAvailable()">
+        <h3> Contact Details </h3>
+        <div class="list-group-item">
+          <a href="" ng-click="changeContactStatus()" class="pull-right"><i class="fa fa-pencil fablack pull-right"></i></a>
+          <h5> Name: <span> {{authentication.user.fullName}} </h5>
+          <h5> Username: {{authentication.user.username}} </h5>
+          <h5> Email: </h5> <span><p> {{authentication.user.email}}</p> </span>
+        </div>
+      </div> -->
   </div>
 </section>
