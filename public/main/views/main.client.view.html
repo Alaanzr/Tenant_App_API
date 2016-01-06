@@ -18,7 +18,7 @@
         <button ng-click="changeEditStatus()" class="pull-right"><i class="fa fa-pencil fablack pull-right"></i></button>
         <h5> Name: <span> {{authentication.user.fullName}} </span> <h5>
         <h5> Username: <span> {{authentication.user.username}} </span> </h5>
-        <h5> Description: </h5>
+        <h5 > Description: {{authentication.user.currentArea}}</h5>
       </div>
     </div>
 
@@ -27,9 +27,9 @@
     <div ng-show="editStatus" class="list-group">
       <div class="list-group-item">
         <h5> Description: </h5>
-        <input type="text" name="name" value=""><br>
+        <input ng-model="description" id="description" name="description" type="text" name="name" value=""><br>
         <h5> Profile Image: </h5>
-        <input type="text" name="name" value="">
+        <input ng-model="image" type="text" name="name" value="">
         <button type="submit" name="button" ng-click="updateProfile()">Update Profile</button>
       </div>
     </div>
