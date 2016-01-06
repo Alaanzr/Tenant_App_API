@@ -9,8 +9,8 @@
       <h3>Hello <span ng-bind="authentication.user.fullName"></span></h3>
       <img ng-src="{{authentication.user.image}}" class="profile_image" /img>
       <br>
-      <a href="" ng-click="changeEditStatus()" ng-show="authentication.user.currentArea == ''"><img class="images" src="/images/House.png"/></a>
-      <a href="" ng-click="changeContactStatus()" ng-show="authentication.user.email == ''"><img class="images" src="/images/Feather.png"/></a>
+      <a href="" ng-click="changeEditStatus()" ng-show="authentication.user.currentArea == ''"><img class="images" src="/images/Profile.png"/></a>
+      <a href="" ng-click="changeContactStatus()" ng-show="authentication.user.email == ''"><img class="images" src="/images/Contact.png"/></a>
       <a href="/#!/properties/create" ng-click="changePropertyStatus()" ng-show="authentication.user.properties.length === 0"><img class="images" src="/images/House.png"/></a>
     </center>
 

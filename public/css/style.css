@@ -73,7 +73,7 @@ h1, h4 {
 
 #noti_Container {
     position:relative;     /* This is crucial for the absolutely positioned element */
-    /*border:1px solid blue; /* This is just to show you where the container ends */*/
+    /*border:1px solid blue; /* This is just to show you where the container ends */
     width:16px;
     height:16px;
 }
@@ -109,8 +109,9 @@ h1, h4 {
 }
 
 .images {
-	margin-top: 100px;
-	margin-bottom: 100px;
+	margin: 5%;
+	/*margin-top: 100px;
+	margin-bottom: 100px;*/
 	height: 200px;
 	width: 200px;
 }
