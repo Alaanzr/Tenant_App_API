@@ -1,8 +1,9 @@
 <div class="container">
-<section ng-controller="PropertyController">
+<section ng-controller="PropertyController" class="animated fadeIn">
   <script type="text/javascript" src="../../../app/views/index.ejs">
   </script>
-  <h1>New Property</h1>
+  <center>
+  <h2>New Property</h2>
   <form ng-submit="createUserProperty()" novalidate>
     <div>
       <label for="post code">Post Code</label>
@@ -52,5 +53,6 @@
     <strong ng-bind="error"></strong>
   </div>
   </form>
+</center>
 </section>
 </div>

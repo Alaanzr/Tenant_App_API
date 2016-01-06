@@ -40,7 +40,7 @@ body {
 
 .faicon {
   margin: 8px 20px;
-  color: white;
+	color: white;
 }
 
 .fablack {
@@ -71,6 +71,13 @@ h1, h4 {
   text-align: center;
 }
 
+h2 {
+	text-transform: uppercase;
+  letter-spacing: 0.15em;
+	font: 50px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	text-align: center;
+}
+
 #noti_Container {
     position:relative;     /* This is crucial for the absolutely positioned element */
     /*border:1px solid blue; /* This is just to show you where the container ends */
@@ -81,9 +88,9 @@ h1, h4 {
 .noti_bubble {
     position:absolute;    /* This breaks the div from the normal HTML document. */
     top: -3px;
-    right:-6px;
+    right:-25px;
     padding:1px 2px 1px 2px;
-    background-color:violet; /* you could use a background image if you'd like as well */
+    background-color:black; /* you could use a background image if you'd like as well */
     color:white;
     font-weight:bold;
     font-size:0.47em;
@@ -114,4 +121,47 @@ h1, h4 {
 	margin-bottom: 100px;*/
 	height: 200px;
 	width: 200px;
+}
+
+.navcolour {
+	background-color: #419bd2;
+}
+
+.glyphicon, .navright {
+	color: white;
+}
+
+.faicon:hover, .brand:hover {
+	color: #d15656;
+}
+
+.navbar-nav > li > a:hover {
+		background-color: #d15656;
+}
+
+.navbar {
+		border-radius: 0;
+}
+
+.navbar-brand {
+	color: black;
+}
+
+.brand {
+	color: white;
+}
+
+.connection-image {
+	border-radius: 50%;
+	border: solid black 3px;
+	height: 50px;
+	width: 50px;
+}
+
+.connection-list {
+	list-style: none;
+}
+
+.requests {
+	margin-bottom: 200px;
 }

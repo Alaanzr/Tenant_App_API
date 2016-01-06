@@ -1,4 +1,4 @@
-<section ng-controller="MainController">
+<section ng-controller="MainController" class="animated fadeIn">
   <div ng-show="authentication.user">
 
     <!--<ul>-->
@@ -18,18 +18,18 @@
     <div id="profile" class="list-group" ng-show="profileAvailable()">
       <h3> Profile </h3>
       <div class="list-group-item">
-        <a href="" ng-click="changeEditStatus()" class="pull-right"><i class="fa fa-pencil fablack pull-right"></i></a>
-        <h5> Description: </h5> <span><p> {{authentication.user.currentArea}}</p> </span>
+        <a href="" ng-click="changeEditStatus()" class="pull-right"><i class="fa fa-pencil fablack pull-right fa-2x"></i></a>
+        <h5> About Me </h5> <span><p> {{authentication.user.currentArea}}</p> </span>
       </div>
     </div>
 
     <br>
 
-    <div ng-show="editStatus" class="list-group">
+    <div ng-show="editStatus" class="list-group animated slideInUp">
       <div class="list-group-item">
-        <h5> Description: </h5>
+        <h5> About Me </h5>
         <textarea ng-model="description" name="description" id="description" rows="5" cols="126"></textarea>
-        <h5> Profile Image: </h5>
+        <h5> Profile Image </h5>
         <input ng-model="image" type="text" name="name" value="">
         <button type="submit" name="button" ng-click="updateProfile()">Update Profile</button>
       </div>
@@ -38,14 +38,14 @@
     <div class="list-group" ng-show="contactDetailsAvailable()">
       <h3> Contact Details </h3>
       <div class="list-group-item">
-        <a href="" ng-click="changeContactStatus()" class="pull-right"><i class="fa fa-pencil fablack pull-right"></i></a>
+        <a href="" ng-click="changeContactStatus()" class="pull-right"><i class="fa fa-pencil fablack pull-right fa-2x"></i></a>
         <h5> Email: </h5> <span><p> {{authentication.user.email}}</p> </span>
       </div>
     </div>
 
     <br>
 
-    <div ng-show="contactDetailsStatus" class="list-group">
+    <div ng-show="contactDetailsStatus" class="list-group animated slideInUp">
       <div class="list-group-item">
         <h5> Email: </h5>
         <input ng-model="email" type="email" name="email">
