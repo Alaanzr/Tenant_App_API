@@ -35,10 +35,7 @@ angular.module('maps').controller('MapsController', ['$scope', '$http', 'geoloca
   //});
 
   $scope.autolocate = function() {
-    console.log(coords);
-    console.log(latitude);
-    console.log(longitude);
-    gservice.refresh(latitude, longitude);
+    gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
   };
 
 
