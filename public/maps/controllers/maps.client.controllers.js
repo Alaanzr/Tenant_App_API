@@ -17,7 +17,7 @@ angular.module('maps').controller('MapsController', ['$scope', '$http', 'geoloca
   $scope.formData.longitude = parseFloat(coords.long).toFixed(3);
   $scope.formData.latitude = parseFloat(coords.lat).toFixed(3);
 
-  console.log(coords);
+  console.log('coord', coords);
   //gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
 });
 
@@ -38,7 +38,7 @@ angular.module('maps').controller('MapsController', ['$scope', '$http', 'geoloca
     console.log(coords);
     console.log(latitude);
     console.log(longitude);
-    gservice.refresh(latitude, longitude);
+    gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
   };
 
 
