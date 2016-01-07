@@ -27,11 +27,12 @@
 
     <div ng-show="editStatus" class="list-group animated slideInUp">
       <div class="list-group-item">
-        <h5> About Me </h5>
-        <textarea ng-model="description" name="description" id="description" rows="5" cols="126"></textarea>
-        <h5> Profile Image </h5>
-        <input ng-model="image" type="text" name="name" value="">
-        <button type="submit" name="button" ng-click="updateProfile()">Update Profile</button>
+        <h3> About Me </h3>
+        <textarea ng-model="description" name="description" id="description" rows="5"></textarea>
+        <h3> Profile Image </h3>
+        <input class="avatar-url" ng-model="image" type="text" name="name" value="" placeholder="Drag your profile image here">
+        <button type="submit" name="button" ng-click="updateProfile()" class="btn btn-danger center-block" id="updateProfile">Update Profile</button><br>
+        <!-- <button type="submit" name="button" ng-click="updateProfile()" class="btn btn-danger pull-right" id="updateProfile">Update Profile</button><br> -->
       </div>
     </div>
 

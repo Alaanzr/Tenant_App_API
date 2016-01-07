@@ -1,0 +1,29 @@
+<div ng-controller="MainController">
+  <nav class="navbar navcolour">
+    <div class="container-fluid">
+      <div class="container-fluid">
+        <div>
+          <ul class="nav navbar-nav" ng-show="authentication.user">
+            <a class="navbar-brand" href="/#!"><span class="brand animated bounceInLeft"><img src="images/HouseMatesText.png" height="100%" /></span></a>
+            <a href="#!/"><i class="fa fa-home faicon fa-2x"></i></a>
+            <a href="#!/connections"><i id="noti_Container" class="fa fa-users faicon fa-2x"><div class="noti_bubble" ng-show="authentication.user.requests_recd.length > 0" ng-bind="authentication.user.requests_recd.length"></div></i></a>
+            <a href="#!/maps"><i class="fa fa-search faicon fa-2x"></i></a>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right" ng-show="authentication.user">
+            <li><a href="/signout"><span class="glyphicon glyphicon-user"></span> <span class="navright">Sign Out</span></a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right" ng-show="!authentication.user">
+            <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> <span class="navright"> Sign Up</span></a></li>
+            <li><a href="/signin"><span class="glyphicon glyphicon-log-in"></span> <span class="navright">Login</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div ng-show="!authentication.user">
+  <div class="containerHomePage">
+      <h1 id="logo"> Your next housemate two clicks away </h1>
+  </div>
+  </div>

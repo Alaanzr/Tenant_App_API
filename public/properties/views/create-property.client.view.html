@@ -4,7 +4,7 @@
   </script>
   <center>
   <h2>New Property</h2>
-  <form ng-submit="createUserProperty()" novalidate>
+  <form class="new-property" ng-submit="createUserProperty()" novalidate>
     <div>
       <label for="post code">Post Code</label>
       <div>
@@ -22,6 +22,7 @@
       <label for="property type">Property Type</label>
     <div>
       <select ng-model="property_type" id="property_type">
+        <option value="">Select a property type</option>
         <option selected> Flat </option>
         <option> House </option>
       </select>
