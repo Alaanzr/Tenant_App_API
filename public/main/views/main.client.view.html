@@ -1,5 +1,5 @@
 <section ng-controller="MainController" class="animated fadeIn">
-  <div ng-show="authentication.user">
+  <div ng-show="authentication.user" class="profile-main">
 
     <!--<ul>-->
       <!--<li><a href="/#!/properties/create">Add Property</a></li>-->
@@ -27,9 +27,9 @@
 
     <div ng-show="editStatus" class="list-group animated slideInUp">
       <form class="contactForm">
-        <h3> About Me </h3>
+        <h4> About Me </h4>
         <textarea ng-model="description" name="description" id="description" rows="5"></textarea>
-        <h3> Profile Image </h3>
+        <h4> Profile Image </h4>
         <input class="avatar-url" ng-model="image" type="text" name="name" value="" placeholder="Drag your profile image here">
         <button type="submit" name="button" ng-click="updateProfile()" class="btn btn-danger center-block" id="updateProfile">Update Profile</button><br>
         <!-- <button type="submit" name="button" ng-click="updateProfile()" class="btn btn-danger pull-right" id="updateProfile">Update Profile</button><br> -->
@@ -64,7 +64,7 @@
     </div>
 
     <ul class="list-group" ng-show="authentication.user.properties.length > 0">
-          <h3> User Properties <a href="/#!/properties/create"><i class="fa
+          <h3> Rental History <a href="/#!/properties/create"><i class="fa
                 fa-plus" id="plus-icon"></i></a></h3>
         <li class="list-group-item" ng-repeat="property in authentication.user.properties">
           <h4> Property # {{$index + 1}} </h4>

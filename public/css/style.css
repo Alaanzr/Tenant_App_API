@@ -29,7 +29,7 @@ body {
 #logo {
   /*opacity: 1;*/
   color: white;
-  font-size: 65px;
+  font-size: 60px;
   font-family: helvetica;
   /*background: black;*/
 
@@ -106,12 +106,19 @@ h1, h4 {
   text-align: center;
 }
 
+.profile-main h4, .profile-main p, .profile-main h5 {
+  font-size: 1.4em;
+  text-align: left;
+}
+
 h2 {
   text-transform: uppercase;
   letter-spacing: 0.15em;
   font: 50px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-align: center;
 }
+
+
 
 #noti_Container {
   position:relative;     /* This is crucial for the absolutely positioned element */
