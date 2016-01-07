@@ -7,9 +7,9 @@
 
     <center>
       <h3>Hello <span ng-bind="authentication.user.fullName"></span></h3>
-      <img ng-src="{{authentication.user.image}}" class="profile_image" /img>
+      <img ng-src="{{authentication.user.profile_picture}}" class="profile_image" /img>
       <br>
-      <a href="" ng-click="changeEditStatus()" ng-show="authentication.user.currentArea == ''"><img class="images" src="/images/Profile.png"/></a>
+      <a href="" ng-click="changeEditStatus()" ng-show="authentication.user.description == ''"><img class="images" src="/images/Profile.png"/></a>
       <a href="" ng-click="changeContactStatus()" ng-show="authentication.user.email == ''"><img class="images" src="/images/Contact.png"/></a>
       <a href="/#!/properties/create" ng-click="changePropertyStatus()" ng-show="authentication.user.properties.length === 0"><img class="images" src="/images/House.png"/></a>
     </center>
@@ -19,7 +19,7 @@
       <h3> Profile </h3>
       <div class="list-group-item">
         <a href="" ng-click="changeEditStatus()" class="pull-right"><i class="fa fa-pencil fablack pull-right fa-2x"></i></a>
-        <h5> About Me </h5> <span><p> {{authentication.user.currentArea}}</p> </span>
+        <h5> About Me </h5> <span><p> {{authentication.user.description}}</p> </span>
       </div>
     </div>
 
@@ -40,6 +40,8 @@
       <div class="list-group-item">
         <a href="" ng-click="changeContactStatus()" class="pull-right"><i class="fa fa-pencil fablack pull-right fa-2x"></i></a>
         <h5> Email: </h5> <span><p> {{authentication.user.email}}</p> </span>
+        <h5> Mobile: </h5> <span><p> {{authentication.user.mobile}}</p> </span>
+        <h5> Current Location: </h5> <span><p> {{authentication.user.current_location}}</p> </span>
       </div>
     </div>
 
@@ -49,6 +51,10 @@
       <div class="list-group-item">
         <h5> Email: </h5>
         <input ng-model="email" type="email" name="email">
+        <h5> Mobile: </h5>
+        <input ng-model="mobile" type="text" name="mobile">
+        <h5> Current Location: </h5>
+        <input ng-model="current_location" type="text" name="current_location">
         <button type="submit" name="button" ng-click="updateContactDetails()">Update Profile</button>
       </div>
     </div>
@@ -61,8 +67,8 @@
           <p> Post Code: {{property.post_code}} </p>
           <p> Street Name: {{property.street_name}} </p>
           <p> Property Type: {{property.property_type}} </p>
-          <p> Contract Start: {{property.contract_start}} </p>
-          <p> Contract End: {{property.contract_end}} </p>
+          <p> Contract Start: {{property.contract_start | date: 'MM/dd/YYYY'}} </p>
+          <p> Contract End: {{property.contract_end | date: 'MM/dd/YYYY'}} </p>
         </li>
       </ul>
 

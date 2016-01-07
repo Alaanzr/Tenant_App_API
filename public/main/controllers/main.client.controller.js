@@ -20,6 +20,8 @@ angular.module('main').controller('MainController', ['$scope', 'Authentication',
   $scope.updateContactDetails = function() {
     var userData = {
       email: $scope.email,
+      mobile: $scope.mobile,
+      current_location: $scope.current_location
     };
 
     $http.put('/users/' + $scope.authentication.user.id, userData).success(function(data) {
@@ -30,7 +32,7 @@ angular.module('main').controller('MainController', ['$scope', 'Authentication',
   };
 
   $scope.profileAvailable = function() {
-    if ($scope.authentication.user.currentArea === '') {
+    if ($scope.authentication.user.description === '') {
       return false;
     } else {
       return true;
@@ -43,8 +45,8 @@ angular.module('main').controller('MainController', ['$scope', 'Authentication',
 
   $scope.updateProfile = function() {
     var userData = {
-      currentArea: $scope.description,
-      image: $scope.image
+      description: $scope.description,
+      profile_picture: $scope.image
     };
 
     $http.put('/users/' + $scope.authentication.user.id, userData).success(function(data) {

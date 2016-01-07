@@ -8,7 +8,9 @@ var UserSchema = new Schema({
     firstName: String,
     lastName: String,
     desiredLocation: [Number],
-    image: String,
+    description: String,
+    current_location: String,
+    mobile: String,
 
     location: {
       type: [Number], // [Long, Lat]
