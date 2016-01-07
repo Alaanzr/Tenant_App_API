@@ -18,7 +18,7 @@
     <div id="profile" class="list-group" ng-show="profileAvailable()">
       <h3> Profile </h3>
       <div class="list-group-item">
-        <a href="" ng-click="changeEditStatus()" class="pull-right"><i class="fa fa-pencil fablack pull-right fa-2x"></i></a>
+        <a href="" ng-click="changeEditStatus()" class="pull-right"><i class="fa fa-pencil fablack pull-right"></i></a>
         <h5> About Me </h5> <span><p> {{authentication.user.description}}</p> </span>
       </div>
     </div>
@@ -26,20 +26,20 @@
     <br>
 
     <div ng-show="editStatus" class="list-group animated slideInUp">
-      <div class="list-group-item">
+      <form class="contactForm">
         <h3> About Me </h3>
         <textarea ng-model="description" name="description" id="description" rows="5"></textarea>
         <h3> Profile Image </h3>
         <input class="avatar-url" ng-model="image" type="text" name="name" value="" placeholder="Drag your profile image here">
         <button type="submit" name="button" ng-click="updateProfile()" class="btn btn-danger center-block" id="updateProfile">Update Profile</button><br>
         <!-- <button type="submit" name="button" ng-click="updateProfile()" class="btn btn-danger pull-right" id="updateProfile">Update Profile</button><br> -->
-      </div>
+        </form>
     </div>
 
     <div class="list-group" ng-show="contactDetailsAvailable()">
       <h3> Contact Details </h3>
       <div class="list-group-item">
-        <a href="" ng-click="changeContactStatus()" class="pull-right"><i class="fa fa-pencil fablack pull-right fa-2x"></i></a>
+        <a href="" ng-click="changeContactStatus()" class="pull-right"><i class="fa fa-pencil fablack pull-right"></i></a>
         <h5> Email: </h5> <span><p> {{authentication.user.email}}</p> </span>
         <h5> Mobile: </h5> <span><p> {{authentication.user.mobile}}</p> </span>
         <h5> Current Location: </h5> <span><p> {{authentication.user.current_location}}</p> </span>
@@ -49,15 +49,18 @@
     <br>
 
     <div ng-show="contactDetailsStatus" class="list-group animated slideInUp">
-      <div class="list-group-item">
+
+        <form class="contactForm">
         <h5> Email: </h5>
-        <input ng-model="email" type="email" name="email">
+        <input ng-model="email" type="email" name="email" placeholder="Insert Email">
         <h5> Mobile: </h5>
-        <input ng-model="mobile" type="text" name="mobile">
+        <input ng-model="mobile" type="text" name="mobile" placeholder="Insert Mobile">
         <h5> Current Location: </h5>
-        <input ng-model="current_location" type="text" name="current_location">
-        <button type="submit" name="button" ng-click="updateContactDetails()">Update Profile</button>
-      </div>
+        <input ng-model="current_location" type="text" name="current_location" placeholder="Insert Current Location">
+        <center>
+        <button type="submit" name="button" ng-click="updateContactDetails()" class="btn btn-danger">Update Profile</button>
+      </center>
+        </form>
     </div>
 
     <ul class="list-group" ng-show="authentication.user.properties.length > 0">

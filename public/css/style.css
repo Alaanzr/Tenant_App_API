@@ -241,3 +241,24 @@ form.new-property input, form.new-property select {
 form.new-property input, form.new-property select, form.new-property button {
   margin-bottom: 1.5em;
 }
+
+form.contactForm {
+  width: 100%;
+  background-color: #FFF;
+  padding: 2em 2em 1em 2em;
+}
+
+form.contactForm div label {
+  text-align: left !important;
+}
+
+form.contactForm input, form.contactForm select, form.contactForm textarea {
+  padding: 1em;
+  background-color: #EFEFEF;
+  border: none;
+  width: 100%;
+}
+
+form.contactForm input, form.contactForm select, form.contacForm button {
+  margin-bottom: 1.5em;
+}
