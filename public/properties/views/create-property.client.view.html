@@ -1,8 +1,9 @@
 <div class="container">
-<section ng-controller="PropertyController">
+<section ng-controller="PropertyController" class="animated fadeIn">
   <script type="text/javascript" src="../../../app/views/index.ejs">
   </script>
-  <h1>New Property</h1>
+  <center>
+  <h2>New Property</h2>
   <form ng-submit="createUserProperty()" novalidate>
     <div>
       <label for="post code">Post Code</label>
@@ -45,12 +46,14 @@
   <input type="date" ng-model="contract_end" id="contract_end"></input>
 </div>
 </div>
+<br>
   <div>
-    <input type="submit">
+    <button type="submit" class="btn btn-danger"> Add Property To Rental History</button>
   </div>
   <div ng-show="error">
     <strong ng-bind="error"></strong>
   </div>
   </form>
+</center>
 </section>
 </div>

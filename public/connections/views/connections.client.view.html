@@ -1,30 +1,33 @@
-<div ng-controller="ConnectionController" ng-init=collectUserDetails()>
-<h1> current user: {{data.username}} </h1>
-<h5> Username: {{data.username}}</h5>
-<h5> Desired Location: {{data.desiredLocation}}</h5>
+<div ng-controller="ConnectionController" ng-init="collectUserDetails()" class="animated fadeIn">
 
 <!-- <div ng-show="outstandingConnections()">
   <p> Outstanding Connection Requests: </p>
   <button type="button" name="button">Accept</button>
 </div> -->
 
-
-Outstanding Requests:
+<center>
+  <div class="requests" ng-show="authentication.user.requests_recd.length > 0">
+<h2> Connection Requests </h2>
 <div>
 <ul ng-repeat="request in requests_recd track by $index">
-  <li>
-  <a href="/#!/users/{{requestees[$index].id}}"> sender request: {{requestees[$index].username}} </a>
-  {{ requestees[$index].id }}
-  <button type="button" name="button" ng-click="acceptConnection($index)">Accept</button>
-  <button type="button" name="button" ng-click="rejectConnection()">Reject</button>
+  <li class="connection-list">
+  <a href="/#!/users/{{requestees[$index].id}}"> <img class="connection-image" src="{{authentication.user.image}}" />{{requestees[$index].username}} </a>
+  <br><br>
+  <button type="button" name="button" ng-click="acceptConnection($index)" class="btn btn-danger">Accept</button>
+  <button type="button" name="button" ng-click="rejectConnection()" class="btn btn-danger">Reject</button>
   </li>
 </ul>
+</div>
+</div>
 
+<div class="connections">
+<h2> Connections </h2>
 <ul ng-repeat="connection in authentication.user.connections track by $index">
-  <li>
-    <a href="/#!/users/{{connection.id }}"> {{ connection.username }}</a>
+  <li class="connection-list">
+    <a href="/#!/users/{{connection.id }}"> <img class="connection-image" src="{{authentication.user.image}}" />{{ connection.username }}</a>
   </li>
 </ul>
 </div>
 
+</center>
 </div>

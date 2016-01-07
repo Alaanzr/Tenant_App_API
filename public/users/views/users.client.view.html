@@ -1,6 +1,6 @@
-<div ng-controller="UserController" ng-init=collectUserDetails()>
+<div ng-controller="UserController" ng-init="collectUserDetails()" class="animated fadeIn">
   <center>
-  <h1> {{data.username}} </h1>
+  <h2> {{data.username}} </h2>
   <img class="profile_image" src="{{data.image}}" />
 </center>
 <div ng-show="connected">
