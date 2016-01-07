@@ -28,6 +28,10 @@ body {
    background-color:#232B2B;
 }
 
+#plus-icon {
+  float: right;
+}
+
 .center {
 	margin: 0 auto;
 	max-width: 550px;
