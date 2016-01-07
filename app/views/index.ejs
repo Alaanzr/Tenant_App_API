@@ -33,12 +33,11 @@
         </div>
       </nav>
 
-      <div ng-show="!authentication.user" class="jumbotron">
-        <div class="container">
-          <h1> HouseMates </h1>
-        </div>
+      <div ng-show="!authentication.user">
+      <div class="container">
+          <h1 id="logo"> Your next housemate two clicks away </h1>
       </div>
-    </div>
+      </div>
 
     <section ng-view></section>
 
@@ -52,7 +51,6 @@ window.user = <%- user || 'null' %>
     <script type="text/javascript" src="/bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
     <script
                                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSwtYvoRodTwA17nKsYaPd8MciKkBKBNo&libraries=places"></script>
-    <!--<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places" type="text/javascript"></script>-->
     <script type="text/javascript" src="/bower_components/modernizr/bin/modernizr"></script>
     <script type="text/javascript" src="/main/main.client.module.js"></script>
     <script type="text/javascript" src="/main/controllers/main.client.controller.js"></script>
@@ -78,7 +76,7 @@ window.user = <%- user || 'null' %>
     <div id="footer">
       <p class="text-center"><span class="glyphicon glyphicon-check"></span>
       Created by <a href="https://github.com/Alaanzr"> Alaan</a>,<a
-                    href="https://github.com/ezzye"> Ez</a>,<a
+                    href="https://github.com/ezzye"> Ez</a>, <a
                     href="https://github.com/jbhdeconinck">Julien </a>and<a
                     href="https://github.com/Mattia46"> Mattia</a> -
                   <a href="https://github.com/Alaanzr/Tenant_App_API">Github Repo</a></p>
