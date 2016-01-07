@@ -10,7 +10,10 @@ angular.module('properties').controller('PropertyController', ['$http', '$scope'
       contract_end: this.contract_end
     };
 
-    $http.post("/properties").success(function(property) {
+    console.log('POST CODE');
+    console.log(this.post_code);
+
+    $http.post("/properties", property).success(function(property) {
       }).then(function(){
         $window.location.reload();
       });

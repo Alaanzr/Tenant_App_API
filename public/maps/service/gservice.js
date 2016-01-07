@@ -46,7 +46,7 @@ angular.module('gservice', []).factory('gservice', ['$http', '$rootScope', funct
 
       // Create popup windows for each record
       var contentString =
-      '<img src="' + user.image + '" height="50px" width="50px"/>' + ' <a href="/#!/users/' + user.id + '">' + user.username + '</a>' +
+      '<img src="' + user.profile_picture + '" height="50px" width="50px"/>' + ' <a href="/#!/users/' + user.id + '">' + user.username + '</a>' +
       '<br>' + '</p>';
 
       // Converts each of the JSON records into Google Maps Location format [Lat, Lng]
