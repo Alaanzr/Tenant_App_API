@@ -177,3 +177,7 @@ h2 {
 .requests {
 	margin-bottom: 200px;
 }
+
+.rounded-border {
+	border-radius: 50%;
+}
