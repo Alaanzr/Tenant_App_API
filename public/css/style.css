@@ -22,8 +22,8 @@ body {
   min-height: 88vh;
   background-size: cover;
   /*overflow: hidden;*/
-  background-image: url("../images/homepage2.jpg");
-  opacity:0.5;
+  background-image: url("../images/housemate.jpg");
+  /*opacity:0.5;*/
 }
 
 #logo {
