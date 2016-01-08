@@ -11,7 +11,8 @@
 <div>
 <ul ng-repeat="request in requests_recd track by $index">
   <li class="connection-list">
-  <a href="/#!/users/{{requestees[$index].id}}"> <img class="connection-image" src="{{authentication.user.profile_picture}}" /><br><br>{{requestees[$index].username}} </a>
+  <a href="/#!/users/{{requestees[$index].id}}"> <img class="connection-image"
+    src="{{requestees[$index].profile_picture}}" /><br><br>{{requestees[$index].username}} </a>
   <br><br>
   <button type="button" name="button" ng-click="acceptConnection($index)" class="btn btn-danger">Accept</button>
   <button type="button" name="button" ng-click="rejectConnection()" class="btn btn-danger">Reject</button>
@@ -24,7 +25,8 @@
 <h2> Connections </h2>
 <ul ng-repeat="connection in authentication.user.connections track by $index">
   <li class="connection-list">
-    <a href="/#!/users/{{connection.id }}"> <img class="connection-image" src="{{authentication.user.profile_picture}}" /><br><br>{{ connection.username }}</a>
+    <a href="/#!/users/{{connection.id }}"> <img class="connection-image"
+      src="{{connection.profile_picture}}" /><br><br>{{ connection.username }}</a>
   </li>
 </ul>
 </div>
