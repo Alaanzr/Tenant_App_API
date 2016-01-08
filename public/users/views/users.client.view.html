@@ -3,7 +3,7 @@
   <h2> {{data.username}} </h2>
   <img class="profile_image" src="{{data.profile_picture}}" />
 </center>
-<div ng-show="connected">
+<div>
 
   <div id="profile" class="list-group">
     <h3> Profile </h3>
@@ -12,7 +12,7 @@
     </div>
   </div>
 
-
+<div ng-show="connected">
   <ul class="list-group" ng-show="data.properties.length > 0">
         <h3> User Properties </h3>
       <li class="list-group-item" ng-repeat="property in data.properties">
@@ -24,7 +24,7 @@
         <p> Contract End: {{property.contract_end}} </p>
       </li>
     </ul>
-
+</div>
 </div>
 <br>
 <center>
