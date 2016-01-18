@@ -3,30 +3,30 @@
 ### Visit the web page at: **http://housematey.herokuapp.com/**
 
 To run the web app locally, run:
-   3 ```
-   4 $ mongod
-   5 ```
-   6 and in an other terminal tab:
-   7 ```
-   8 node server
-   9 ```
-  10 Then open your browser and paste:
-  11 ```
-  12 http://localhost:1337/
-  13 ```
-  14 If you have problem to run mongod
-  15 ```
-  16 $ brew unpdate
-  17 $ brew install mongodb
-  18 ```
-  19 If you are still having problems, try to create the data/db folder:
-  20 ```
-  21 $ sudo mkdir -p /data/db
-  22 ```
-  23 If says that you haven't got the permission, run:
-  24 ```
-  25 sudo chown -R `id -u` /data/db
-  26 ```
+```
+$ mongod
+```
+and in an other terminal tab:
+```
+node server
+```
+Then open your browser and paste:
+```
+http://localhost:1337/
+```
+If you have problem to run mongod
+```
+$ brew unpdate
+$ brew install mongodb
+```
+If you are still having problems, try to create the data/db folder:
+```
+$ sudo mkdir -p /data/db
+```
+If says that you haven't got the permission, run:
+```
+sudo chown -R `id -u` /data/db
+```
   
 ### User Stories - Listed in order of importance
 
