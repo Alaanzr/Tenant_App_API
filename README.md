@@ -1,5 +1,31 @@
 # Tenant-App
 
+To run the web app locally, run:
+```
+$ mongod
+```
+and in an other terminal tab:
+```
+node server
+```
+Then open your browser and paste:
+```
+http://localhost:1337/
+```
+If you have problem to run mongod
+```
+$ brew unpdate
+$ brew install mongodb
+```
+If you are still having problems, try to create the data/db folder:
+```
+$ sudo mkdir -p /data/db
+```
+If says that you haven't got the permission, run:
+```
+sudo chown -R `id -u` /data/db
+```
+
 ### User Stories - Listed in order of importance
 
 ##### 1 - Profiles
