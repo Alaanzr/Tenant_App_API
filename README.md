@@ -2,6 +2,9 @@
 
 ### Visit the web page at: **http://housematey.herokuapp.com/**
 
+![alt text](/img/homepage.png)
+![alt text](/img/mapSearch.png)
+
 To run the web app locally, run:
 ```
 $ mongod
