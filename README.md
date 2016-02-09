@@ -50,6 +50,10 @@ I want to send a connection request
 * JQuery
 * Jasmine
 * Karma
+* Bootstrap
+* Git workflow (Waffle)
+* Heroku
+* AJAX
 
 ##### For the iOS app
 
