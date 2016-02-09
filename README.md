@@ -1,5 +1,9 @@
 # Tenant-App
 
+![alt text](/images/homepage.png)
+
+![alt text](/img/mapSearch.png)
+
 To run the web app locally, run:
 ```
 $ mongod
