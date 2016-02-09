@@ -2,8 +2,8 @@
 
 ### Visit the web page at: **http://housematey.herokuapp.com/**
 
-![alt text](/img/homepage.png)
-![alt text](/img/mapSearch.png)
+![alt text](public/images/homepage.png)
+![alt text](/images/mapSearch.png)
 
 To run the web app locally, run:
 ```
