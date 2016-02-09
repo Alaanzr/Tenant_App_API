@@ -2,7 +2,12 @@
 
 ### Visit the web page at: **http://housematey.herokuapp.com/**
 
+#### Home page
+
 ![alt text](public/images/homepage.png)
+
+#### Map search
+
 ![alt text](public/images/mapSearch.png)
 
 #### Task
