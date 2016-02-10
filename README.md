@@ -13,8 +13,6 @@ API) with your needs and connect with them.
 
 ![alt text](public/images/mapSearch.png)
 
-## Task
-
 
 ## User story
 ```
